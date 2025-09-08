@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Combination Selector </title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h4 {
+        color: #2c3e50;
+    }
+    pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-left: 5px solid #3498db;
+    }
+    button {
+        margin: 5px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h4> Combination Selectors in jQuery (Group Selector )</h4>
+<pre>
+    Combination selectors are used when you want to combine multiple simple selectors to be more specific about
+       which elements to select.
+    They are borrowed from CSS selectors, and jQuery supports them directly.
+    
+    Here are some commonly used combination selectors in jQuery:
+
+1. Descendant Selector (ancestor descendant)
+   Selects all elements that are inside another element (at any depth).
+    Example: $("div p") selects all 'p' elements that are inside 'div' elements.
+    
+2. Child Selector (parent > child)
+   Selects all elements that are direct children of a specified element.
+    Example: $("ul > li") selects all <li></li> elements that are direct children of <ul></ul> elements.
+
+3. Multiple Selector (selector1, selector2, ...)
+   Selects all elements that match any of the specified selectors.
+    Example: $("h1, h2, .highlight") selects all <h1>-</h1> and <h2>-</h2> elements, as well as all elements with the class "highlight".
+
+4. Attribute Selector (element[attribute=value])
+   Selects elements that have a specific attribute with a specific value.
+    Example: $("input[type='text']") -- selects all <input> elements with type="text".
+              $("src[width='300']")  -- selects all 'src' elements with width="300"
+
+5. Pseudo-class Selector (element:pseudo-class)
+   Selects elements based on their state or position. 
+    Example: $("a:hover") selects all <a></a> elements when they are being hovered over.
+    Example: $("li:first-child") selects the first <li></li> element among its siblings.
+
+  6. Grouping Selector (selector1 selector2)
+   Selects elements that match a combination of selectors.  
+    Example: $("div.highlight > p.intro") selects all <p></p> elements with class "intro" that are direct children of <div></div> elements with class "highlight".  
+</pre>
+  <hr>
+  <h4> jQuery Combination Selector Demo - Example Program </h4>
+  <h3> Example Program </h3>  
+  <div class="highlight">
+    <p class="intro">This is an introductory paragraph inside a highlighted div.</p>
+    <p>This is another paragraph inside the same div.</p>
+    <h6> I am H6 in Div </h6>
+    <h5> I am H6 in Div </h5>
+  </div>
+  <div>
+    <p class="intro">This is an introductory paragraph inside a normal div.</p>
+    <p>This is another paragraph inside the same div.</p>   
+    <p class="testing">This is an testing para paragraph inside a normal div.</p>
+  </div>
+  <ul>
+    <li class="testing">List item 1</li>
+    <li>List item 2</li>
+    <li class="highlight">List item 3 (highlighted)</li>    
+    <li>List item 4</li>
+  </ul>
+  <input type="text" value="Text Input 1">    
+  <input type="password" value="Password Input">    
+  <input type="text" value="Text Input 2">  
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>        
+  <button id="btn1">Highlight Descendant Selector (div p)</button>
+  <button id="btn2">Highlight Child Selector (ul > li)</button> 
+  <button id="btn3">Highlight Multiple Selector (h1, h2, .highlight)</button>
+  <button id="btn4">Highlight Attribute Selector (input[type='text'])</button>
+  <button id="btn5">Highlight Pseudo-class Selector (a:hover)</button>    
+  <button id="btn6">Highlight Grouping Selector (div.highlight > p.intro)</button>
+  <button id="btn51"> Remove class selector - removeClass() </button>    
+  <style>
+    .highlighted {
+        background-color: yellow;
+    }   
+    .highlight {
+        background-color: rgb(243, 163, 205);
+    }
+    .intro {
+        font-weight: bold;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        // Descendant Selector
+        $("#btn1").click(function(){
+            $("div p").addClass("highlighted");
+        });
+
+        // Child Selector
+        $("#btn2").click(function(){
+            $("ul > li").addClass("highlighted");
+        });
+
+        // Multiple Selector
+        $("#btn3").click(function(){
+            $("h3, .highlight, .testing").addClass("highlighted");
+        });
+
+        // Attribute Selector
+        $("#btn4").click(function(){
+            $("input[type='text']").addClass("highlighted");
+        });
+
+        // Pseudo-class Selector (Note: This will only highlight when hovered)
+        $("#btn5").click(function(){
+            $("a").hover(
+                function() { $(this).addClass("highlighted"); },
+               // function() { $(this).removeClass("highlighted"); }
+            );
+        });
+
+        $("#btn51").click(function(){
+               // function() { $(this).addClass("highlighted"); },
+                $("a").removeClass("highlighted");
+               }
+        ); 
+
+        // Grouping Selector
+        $("#btn6").click(function(){
+            $("div.highlight > p.intro").addClass("highlighted");
+        });
+    }); 
+  </script>
+  <hr>
+  <hr>
+
+  <h4>1. Descendant Selector (ancestor descendant) Selects all elements that are inside another element (at any depth).</h4>
+  <div id="container">
+  <p>This is a paragraph.</p>
+  <span><p>Nested paragraph inside span</p></span>
+</div>
+
+<script>
+$("#container p").css("color", "blue");
+</script>
+
+<hr>
+
+<h4>2. Child Selector (parent > child) Selects all elements that are direct children of a specified element.</h4>
+<h5> Example - 1</h5>
+<div id="parent">
+  <p>Direct child paragraph</p>
+  <div>
+    <p>Nested paragraph inside div</p>
+  </div>    
+</div>
+<script>
+$("#parent > p").css("color", "green");
+</script>
+
+<h5>Example - 2 </h5>
+<ul id="menu">
+  <li>Home</li>
+  <li>About </li>
+    <ul>
+      <li>Team</li>
+      <li>History</li>
+    </ul>
+  <li>Services</li>
+  <li>Contact</li>
+</ul>
+
+<script>
+$("#menu > li").css("color", "red");
+</script>
+<hr>
+
+<h4> Explanation: </h4>   
+<pre>
+        $("#btn2") ->  Selects the element with id = "btn2" (usually a button).
+        .click(function(){ ... }) ->  Attaches a click event handler to that button.
+                So, whenever the button is clicked, the function inside will run.
+        $("ul > li") ->  Selects all <li> elements that are direct children of <ul> elements
+        .addClass("highlighted") -> Adds the CSS class "highlighted" to all those selected elements.
+        This usually changes the style/appearance of those elements (based on how "highlighted" is defined in CSS). 
+</pre>
+
+<hr>
+
+<h4>3. Adjacent Sibling Selector (prev + next)  --- Selects the first element immediately after another element.</h4>
+<h4>Heading</h4>
+<p>Paragraph immediately after heading</p>
+<p>Another paragraph</p>
+
+<script>
+$("h4 + p").css("background", "yellow");
+</script>
+<p>NOTE: Only the first <p> after <h2> gets a yellow background.</p>
+<hr>
+
+<h4> 4. General Sibling Selector (prev ~ siblings)  --- Selects all siblings after a specific element.</h4>
+<h3>Title</h3>
+<p>First paragraph</p>
+<p>Second paragraph</p>
+
+<script>
+$("h3 ~ p").css("font-weight", "bold");
+</script>
+<p>NOTE: <h3>Both  elements after </h3> <p> become bold.</p> </p>
+<hr>
+
+<h4> Summary of jQuery Basic Selectors </h4>
+    In jQuery, selectors are used to "find" (select) HTML elements so we can work with them.
+    The syntax is very simple:
+
+        $("selector")
+            Here are the three most common basic selectors:
+                $("p") → selects all elements.
+                $("#id") → selects element by id.
+                $(".class") → selects elements by class name.
+    </pre>
+    <hr>  
+
+  <pre>
+Summary Table
+Selector Type	    Syntax	    Meaning
+Descendant      	A B	        Selects B inside A (any depth)
+Child	            A > B	      Selects B that are direct children of A
+Adjacent Sibling	A + B	      Selects the first B immediately after A
+General Sibling	  A ~ B	      Selects all B siblings after A
+
+In short:
+
+Use A B → Any depth descendant
+Use A > B → Direct child
+Use A + B → First immediate sibling
+Use A ~ B → All following siblings
+
+ </pre> 
+ 
+ <hr>
+<pre>
+  What is a pseudo-class?
+A pseudo-class is used in CSS to define the state of an element.
+It lets you style elements when they are in a particular condition (like when hovered, clicked, visited, etc.).
+
+Syntax:
+
+selector:pseudo-class {
+  property: value;
+}
+
+Common Pseudo-class Names in CSS
+1. User Action States
+:hover → When the mouse is over an element.
+:active → When an element is being clicked.
+:focus → When an input field (or element) is focused.
+:visited → Links that have been visited.
+:link → Links that have not been visited.
+
+2. Form-related Pseudo-classes
+:checked → Radio buttons/checkboxes that are checked.
+:disabled → Disabled form elements.
+:enabled → Enabled form elements.
+:required → Input fields that are required.
+:optional → Input fields that are optional.
+:valid → Input fields with valid values.
+:invalid → Input fields with invalid values.
+:in-range → Input values within range.
+:out-of-range → Input values outside range.
+:read-only → Input fields that are read-only.
+:read-write → Input fields that can be edited.
+
+3. Structural Pseudo-classes
+:first-child → First child of a parent.
+:last-child → Last child of a parent.
+:nth-child(n) → The nth child of a parent.
+:nth-last-child(n) → The nth child counting from the end.
+:only-child → An element that is the only child of its parent.
+:first-of-type → First element of its type in a parent.
+:last-of-type → Last element of its type.
+:nth-of-type(n) → nth element of its type.
+:nth-last-of-type(n) → nth element of its type counting from the end.
+:only-of-type → Only element of its type.
+:empty → Element with no children.
+</pre> 
+
+</body>
+</html>

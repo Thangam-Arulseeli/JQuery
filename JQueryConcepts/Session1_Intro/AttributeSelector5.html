@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attribute Selectors in JQuery </title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    h4 {
+        color: #2c3e50;
+    }
+    pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-left: 5px solid #3498db;
+    }
+    button {
+        margin: 5px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+  </style>
+    jquery library
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h4> Attribute Selectors in jQuery </h4>
+<pre>
+    Attribute selectors are used to select elements based on the presence or value of a specific attribute.
+    They are very useful when you want to target elements with certain attributes or attribute values.
+
+    Here are some commonly used attribute selectors in jQuery:    
+1. [attribute]
+    Selects elements that have the specified attribute, regardless of its value.
+      Example: $("input[required]") selects all <input> elements that have the "required" attribute.
+2. [attribute=value]
+    Selects elements that have the specified attribute with a specific value.
+      Example: $("input[type='text']") selects all <input> elements with type="text". 
+3. [attribute!=value]
+    Selects elements that do not have the specified attribute with a specific value.
+      Example: $("input[type!='text']") selects all <input> elements where the type attribute is not "text".  
+4. [attribute^=value]
+    Selects elements whose specified attribute value begins with a certain string.
+      Example: $("a[href^='https']") selects all <a> elements where the href attribute value starts with "https".
+5. [attribute$=value]
+    Selects elements whose specified attribute value ends with a certain string.
+      Example: $("img[src$='.png']") selects all <img> elements where the src attribute value ends with ".png".
+6. [attribute*=value]
+    Selects elements whose specified attribute value contains a certain substring.
+      Example: $("a[href*='example']") selects all <a> elements where the href attribute value contains the substring "example".  
+</pre>
+<hr>
+
+<h4>Attribute Selectors in jQuery</h4>
+<pre>
+jQuery lets you select elements based on their attributes and attribute values, just like CSS.
+    The general syntax is:
+        $("[attribute='value']")
+Types of Attribute Selectors
+1. Has Attribute Selector
+$("[title]").css("color", "blue");  // Selects all elements that have a title attribute, regardless of its value.
+
+2. Exact Match ([attr='value'])
+$("input[type='text']").css("background", "lightyellow"); // Selects <input> elements where type="text".
+
+3. Not Equal ([attr!='value'])
+$("input[name!='username']").css("border", "1px solid red");  // Selects all <input> except those with name="username".
+
+4. Starts With ([attr^='value'])  
+$("a[href^='https']").css("color", "green");  //  Selects links where href starts with "https".
+
+5. Ends With ([attr$='value'])
+$("img[src$='.png']").css("border", "2px solid blue");  // Selects images where src ends with .png.
+
+6. Contains ([attr*='value'])
+$("a[href*='google']").css("font-weight", "bold");  // Selects links where href contains "google" anywhere.
+
+7. Multiple Attribute Selector
+$("input[type='text'][name='email']").css("background", "lightgreen");  // Selects <input> elements that have both type="text" and name="email".
+
+Summary:
+-----------
+[attr] → has attribute
+[attr='value'] → exact match
+[attr!='value'] → not equal
+[attr^='value'] → starts with
+[attr$='value'] → ends with
+[attr*='value'] → contains
+[attr1][attr2] → multiple attributes
+
+</pre>
+<p4> Example : 1 </p4>
+<!-- Example Program -->
+ <input type="text" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<input type="text" name="email" placeholder="Email">
+
+<a href="https://google.com">Google</a>
+<a href="https://example.com">Example</a>
+<img src="Car1.webp" alt="Car" title="A car image" width="100" height="60">
+<img src="Flower1.jpg" alt="Flower" title="A Flower Image" width="100" height="60">
+
+<!-- jQuery code to demonstrate Attribute Selectors in action -->
+<script>
+$(document).ready(function() {
+  $("[name='username']").css("background", "lightyellow");   // exact match
+  $("a[href^='http']").css("color", "red");               // starts with
+  $("img[src$='.jpg']").css("border", "2px solid red");      // ends with
+  $("img[src$='.webp']").css("border", "5px dotted pink");      // ends with
+  $("input[placeholder='Password'][name='email']").css("background", "pink"); // multiple
+});
+</script>
+
+<hr>
+
+<!-- <script>
+    $(document).ready(function(){
+        // Has Attribute Selector
+        $("[title]").css("color", "blue");
+
+        // Exact Match
+        $("input[type='text']").css("background", "lightyellow");
+
+        // Not Equal
+        $("input[name!='username']").css("border", "1px solid red");
+
+        // Starts With
+        $("a[href^='https']").css("color", "green");
+
+        // Ends With
+        $("img[src$='.png']").css("border", "2px solid blue");
+
+        // Contains
+        $("a[href*='google']").css("font-weight", "bold");
+
+        // Multiple Attribute Selector
+        $("input[type='text'][name='email']").css("background", "lightgreen");
+    }); 
+</script> -->
+
+
+<hr>
+    <style>
+        /* body { font-family: Arial, sans-serif; margin: 20px; } */
+        input, a, img { display: block; margin: 10px 0; padding: 5px; }
+        .highlight { background: yellow; border: 2px solid orange; }
+        
+    </style>
+
+
+    <h2>jQuery Attribute Selectors Example</h2>
+
+    <h3>Form Inputs</h3>
+        <input type="text" name="username1" placeholder="Username">        <!-- has type & name -->
+            <input type="text" name="firstname1" placeholder="First Name">    <!-- has type & name -->
+            <input type="email" name="email1" placeholder="Email">            <!-- different type -->
+            <input name="lastname" placeholder="Last Name (no type attr)">   <!-- no type attribute -->
+            <input type="text" placeholder="No name attribute">               <!-- has type but no name -->
+            <input type="password" name="password1" placeholder="Password">    <!-- different type -->
+
+    <h3>Links</h3>
+    <a href="https://google.com" title="Google">Google</a>
+    <a href="https://example.com">Example</a>
+    <a href="http://testsite.com">Test Site</a>
+
+    <h3>Images</h3>
+    <img src="Flower1.jpg" alt="Flower1" title="A Flower Image" width="100" height="60">
+    <img src="Flower2.jpg" alt="Flower2" width="100" height="60">
+
+    <script>
+        $(document).ready(function () {
+
+            // 1. Has Attribute
+            $("[title]").addClass("highlight");  
+
+            // 2. Exact Match
+            $("input[name='username']").css("background", "lightyellow");  
+
+            // 3. Not Equal
+            $("input[name!='username']").css("border", "1px solid gray");  
+
+            // 4. Starts With
+            $("a[href^='https']").css("color", "green");  
+
+            // 5. Ends With
+            $("img[src$='.png']").css("border", "2px solid red");  
+
+            // 6. Contains
+            $("a[href*='google']").css("font-weight", "bold");  
+
+            // // 7. Multiple Attribute
+            // $("input[type='text'][type='email']").css("background", "cyan");  
+           
+            // Multiple attribute selector:
+      // Selects inputs that have BOTH type="text" AND name attribute
+      //$("input[type='text'][name]").css("background", "cyan");
+
+      // debug info in console
+      //console.log("jQuery version:", $.fn.jquery);
+      console.log("Total inputs:", $("input").length);
+
+      // Approach B: include inputs that either have type="text" OR have no type attribute
+      const selector = "input[name][type='text'], input[name]:not([type])";
+      console.log("Selector:", selector, "Matches:", $(selector).length);
+
+      // Apply background color (explicit background-color)
+      $(selector).css("background-color", "cyan");
+
+      // Alternative: a runtime filter approach (uncomment to use)
+      /*
+      const filtered = $("input[name]").filter(function() {
+        return !this.hasAttribute('type') || this.type.toLowerCase() === "text";
+      });
+      console.log("Filtered matches:", filtered.length);
+      filtered.css("background-color", "lightgreen");
+      */
+    });
+ 
+       
+    </script>
+
+</body>
+</html>

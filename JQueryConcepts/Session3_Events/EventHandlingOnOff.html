@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery on() and off() with Multiple Events + Reset/Re-Enable</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    button { margin: 5px; padding: 8px 12px; }
+    #actionBtn { background: lightblue; padding: 15px 25px; border: none; cursor: pointer; }
+    #status { margin-top: 15px; font-weight: bold; }
+    .hoverEffect { background: orange !important; color: white; }
+  </style>
+<body>
+  <p4> jQuery Event handling methods (on(), off()) with Multiple Events + Reset/Re-Enable</p4>
+<pre>
+    In jQuery, event handling methods are used to attach and manage event listeners on HTML elements. The two primary methods for event handling in jQuery are .on() and .off().  
+on() Method
+
+Used to attach one or more event handlers to selected elements.
+
+Replaces older methods like .click(), .bind(), .delegate().
+
+Supports multiple events, event delegation, and passing data.
+
+off() Method
+
+Used to remove event handlers attached using .on().
+
+Useful when you want to disable certain interactions after a condition.
+Supports removing specific handlers or all handlers for an event.
+Example Usage
+$(selector).on(event, childSelector, data, function)
+Attaches an event handler to the selected elements.
+- event: The event type (e.g., "click", "mouseover").
+- childSelector: (Optional) A selector string to filter the descendants of the selected elements that trigger the event.
+- data: (Optional) Data to be passed to the event handler.
+- function: The function to execute when the event is triggered.
+$(selector).off(event, childSelector, function)
+Removes an event handler from the selected elements.
+- event: The event type to remove (e.g., "click").
+- childSelector: (Optional) A selector string to filter the descendants of the selected elements. 
+- function: (Optional) The specific function to remove.
+
+Key Differences Between .on() and .off()
+Method	Purpose
+.on()	Attach event(s) to elements (supports multiple events and delegation)
+.off()	Remove event(s) attached via .on()
+</pre>
+
+<hr>
+<pre>
+  How it works:
+
+Click Me button → The main button students will test.
+
+Enable Click Event → Uses .on() to attach the handler.
+
+Disable Click Event → Uses .off() to remove the handler.
+
+Status message updates live to show whether the event is active.
+
+
+Features in this demo:
+
+Click Event → Shows timestamp when clicked.
+
+Double-Click Event → Shows timestamp when double-clicked.
+
+Hover Event → Changes button color on mouse enter/leave.
+
+Enable / Disable buttons → Attach/remove handlers with .on() and .off().
+
+Live status message shows which event was triggered or enabled/disabled.
+
+
+
+Enable/disable Click, Double-Click, Hover individually.
+
+Reset All Events to remove all handlers.
+
+Re-Enable All Events to quickly restore them.
+
+Watch the status message update with each interaction.
+</pre>
+
+<hr>
+
+<h2>jQuery on() and off() with Multiple Events</h2>
+
+  <button id="actionBtn">Action Button</button>
+  <br><br>
+
+  <button id="enableClick">Enable Click</button>
+  <button id="disableClick">Disable Click</button>
+  <br>
+
+  <button id="enableDblClick">Enable Double-Click</button>
+  <button id="disableDblClick">Disable Double-Click</button>
+  <br>
+
+  <button id="enableHover">Enable Hover</button>
+  <button id="disableHover">Disable Hover</button>
+  <br>
+
+  <button id="resetAll">🚫 Reset All Events</button>
+  <button id="reEnableAll">✅ Re-Enable All Events</button>
+
+  <p id="status">No event is currently enabled.</p>
+
+  <script>
+    $(document).ready(function() {
+
+      // Event Handlers
+      function handleClick() {
+        $("#status").html("✅ Button <b>clicked</b> at: " + new Date().toLocaleTimeString());
+      }
+
+      function handleDblClick() {
+        $("#status").html("🔁 Button <b>double-clicked</b> at: " + new Date().toLocaleTimeString());
+      }
+
+      function handleHoverIn() {
+        $("#actionBtn").addClass("hoverEffect");
+        $("#status").html("🖱️ Mouse <b>entered</b> button.");
+      }
+
+      function handleHoverOut() {
+        $("#actionBtn").removeClass("hoverEffect");
+        $("#status").html("🖱️ Mouse <b>left</b> button.");
+      }
+
+      // Click Events
+      $("#enableClick").on("click", function() {
+        $("#actionBtn").on("click", handleClick);
+        $("#status").html("Click event <b>enabled</b>. Try clicking the button!");
+      });
+
+      $("#disableClick").on("click", function() {
+        $("#actionBtn").off("click", handleClick);
+        $("#status").html("Click event <b>disabled</b>.");
+      });
+
+      // Double-Click Events
+      $("#enableDblClick").on("click", function() {
+        $("#actionBtn").on("dblclick", handleDblClick);
+        $("#status").html("Double-click event <b>enabled</b>. Try double-clicking the button!");
+      });
+
+      $("#disableDblClick").on("click", function() {
+        $("#actionBtn").off("dblclick", handleDblClick);
+        $("#status").html("Double-click event <b>disabled</b>.");
+      });
+
+      // Hover Events
+      $("#enableHover").on("click", function() {
+        $("#actionBtn").on("mouseenter", handleHoverIn)
+                       .on("mouseleave", handleHoverOut);
+        $("#status").html("Hover event <b>enabled</b>. Move your mouse over the button!");
+      });
+
+      $("#disableHover").on("click", function() {
+        $("#actionBtn").off("mouseenter", handleHoverIn)
+                       .off("mouseleave", handleHoverOut);
+        $("#status").html("Hover event <b>disabled</b>.");
+      });
+
+      // Reset All Events
+      $("#resetAll").on("click", function() {
+        $("#actionBtn").off(); // removes ALL event handlers
+        $("#actionBtn").removeClass("hoverEffect"); // reset hover style
+        $("#status").html("🚫 All events have been <b>reset</b>. No interactions are active.");
+      });
+
+      // Re-Enable All Events
+      $("#reEnableAll").on("click", function() {
+        $("#actionBtn").on("click", handleClick)
+                       .on("dblclick", handleDblClick)
+                       .on("mouseenter", handleHoverIn)
+                       .on("mouseleave", handleHoverOut);
+        $("#status").html("✅ All events have been <b>re-enabled</b>. Try them again!");
+      });
+
+    });
+  </script>
+
+</body>
+</html>

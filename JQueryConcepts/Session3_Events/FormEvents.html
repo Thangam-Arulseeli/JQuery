@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Form Events </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, textarea, select, button { display: block; margin: 10px 0; padding: 8px; }
+    .highlight { background-color: lightyellow; }
+  </style>
+</head>
+<body>
+  <h3>Form Events</h3>
+  <pre>
+    In jQuery, form events are used to handle user interactions with form elements (like input fields, textareas, checkboxes, etc.).
+    Here are some commonly used form events in jQuery:
+
+    submit()
+    Triggered when a form is submitted.
+    Example: Validating form data before submission.
+
+    change()
+    Triggered when the value of an input element changes and the element loses focus.
+    Example: Updating a preview when a user selects a different option from a dropdown.
+
+    input()
+    Triggered every time the value of an input element changes (more immediate than change()).
+    Example: Live-updating a character count as the user types in a textarea.
+
+    focus()
+    Triggered when an element gains focus (e.g., when a user clicks on an input field or tabs to it).
+    Example: Highlighting an input field when it gains focus.
+
+    blur()
+    Triggered when an element loses focus (e.g., when a user clicks away from an input field or tabs out of it).
+    Example: Validating input when an input field loses focus.
+
+    select()
+    Triggered when text within an input or textarea is selected.
+    Example: Displaying the selected text length.
+
+    reset()
+    Triggered when a form is reset. 
+    Example: Confirming with the user before resetting a form.
+
+    invalid()
+    Fires when a form element is invalid during validation (required, pattern, type=email etc.).
+    Example: Custom handling of invalid form inputs.
+
+    keydown / keyup / keypress (keyboard inside form fields)
+    Used to capture user typing inside input/textarea fields.
+    Example: Restricting input to numeric characters only.
+
+    cut / copy / paste
+    Triggered when user cuts, copies, or pastes into an input/textarea.
+    Example: Preventing pasting into a password field.  
+    
+  Note: These events can be attached to form elements using jQuery's .on() method 
+        for better flexibility and to handle dynamically added elements.  
+
+  </pre>
+<!-- Example -->  
+   <h4> jQuery Form Events Demo - Example Program </h4>
+    <h2>Form Events Demo</h2>
+  <form id="demoForm">
+    <!-- focus / blur -->
+    <label>Username:</label>
+    <input type="text" id="username" placeholder="Focus & Blur">
+
+    <!-- change / input -->
+    <label>Email:</label>
+    <input type="email" id="email" placeholder="Change & Input">
+
+    <!-- select -->
+    <label>About You:</label>
+    <textarea id="about">Select some text here...</textarea>
+
+    <!-- dropdown with change -->
+    <label>Choose City:</label>
+    <select id="city">
+      <option value="">--Select--</option>
+      <option value="Chennai">Chennai</option>
+      <option value="Madurai">Madurai</option>
+      <option value="Coimbatore">Coimbatore</option>
+    </select>
+
+    <!-- key events -->
+    <label>Type something:</label>
+    <input type="text" id="keyInput" placeholder="Keyboard events">
+
+    <!-- copy/paste -->
+    <label>Try copy/paste:</label>
+    <input type="text" id="copyPaste" placeholder="Cut/Copy/Paste">
+
+    <!-- submit / reset -->
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+
+  <script>
+    // focus & blur
+    const username = document.getElementById("username");
+    username.addEventListener("focus", () => username.classList.add("highlight"));
+    username.addEventListener("blur", () => username.classList.remove("highlight"));
+
+    // change & input
+    const email = document.getElementById("email");
+    email.addEventListener("change", () => alert("Email field changed: " + email.value));
+    email.addEventListener("input", () => console.log("Typing: " + email.value));
+
+    // select
+    document.getElementById("about").addEventListener("select", () => alert("You selected text in textarea!"));
+
+    // dropdown change
+    document.getElementById("city").addEventListener("change", (e) => alert("City selected: " + e.target.value));
+
+    // key events
+    const keyInput = document.getElementById("keyInput");
+    keyInput.addEventListener("keydown", (e) => console.log("Key down: " + e.key));
+    keyInput.addEventListener("keyup", (e) => console.log("Key up: " + e.key));
+
+    // cut / copy / paste
+    const copyPaste = document.getElementById("copyPaste");
+    copyPaste.addEventListener("cut", () => alert("Cut detected!"));
+    copyPaste.addEventListener("copy", () => alert("Copy detected!"));
+    copyPaste.addEventListener("paste", () => alert("Paste detected!"));
+
+    // submit
+    document.getElementById("demoForm").addEventListener("submit", function(event) {
+      if (username.value.trim() === "") {
+        alert("Username is required!");
+        event.preventDefault(); // prevent form submission
+      } else {
+        alert("Form submitted successfully!");
+      }
+    });
+
+    // reset
+    document.getElementById("demoForm").addEventListener("reset", () => alert("Form has been reset!"));
+
+    // invalid (built-in HTML validation)
+    email.addEventListener("invalid", () => alert("Invalid email format!"));
+  </script>
+
+  <hr>
+  <hr>
+  
+  <h2>Form Events Demo - jQuery</h2>
+  <form id="demoForm">
+    <!-- focus / blur -->
+    <label>Username:</label>
+    <input type="text" id="username" placeholder="Focus & Blur">
+
+    <!-- change / input -->
+    <label>Email:</label>
+    <input type="email" id="email" placeholder="Change & Input">
+
+    <!-- select -->
+    <label>About You:</label>
+    <textarea id="about">Select some text here...</textarea>
+
+    <!-- dropdown with change -->
+    <label>Choose City:</label>
+    <select id="city">
+      <option value="">--Select--</option>
+      <option value="Chennai">Chennai</option>
+      <option value="Madurai">Madurai</option>
+      <option value="Coimbatore">Coimbatore</option>
+    </select>
+
+    <!-- key events -->
+    <label>Type something:</label>
+    <input type="text" id="keyInput" placeholder="Keyboard events">
+
+    <!-- copy/paste -->
+    <label>Try copy/paste:</label>
+    <input type="text" id="copyPaste" placeholder="Cut/Copy/Paste">
+
+    <!-- submit / reset -->
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      // focus & blur
+      $("#username").focus(function() {
+        $(this).addClass("highlight");
+      }).blur(function() {
+        $(this).removeClass("highlight");
+      });
+
+      // change & input
+      $("#email").change(function() {
+        alert("Email field changed: " + $(this).val());
+      });
+      $("#email").on("input", function() {
+        console.log("Typing: " + $(this).val());
+      });
+
+      // select
+      $("#about").select(function() {
+        alert("You selected text in textarea!");
+      });
+
+      // dropdown change
+      $("#city").change(function() {
+        alert("City selected: " + $(this).val());
+      });
+
+      // key events
+      $("#keyInput").keydown(function(e) {
+        console.log("Key down: " + e.key);
+      }).keyup(function(e) {
+        console.log("Key up: " + e.key);
+      });
+
+      // cut / copy / paste
+      $("#copyPaste").on("cut", function() {
+        alert("Cut detected!");
+      }).on("copy", function() {
+        alert("Copy detected!");
+      }).on("paste", function() {
+        alert("Paste detected!");
+      });
+
+      // submit
+      $("#demoForm").submit(function(e) {
+        if ($("#username").val().trim() === "") {
+          alert("Username is required!");
+          e.preventDefault(); // prevent form submission
+        } else {
+          alert("Form submitted successfully!");
+        }
+      });
+
+      // reset
+      $("#demoForm").on("reset", function() {
+        alert("Form has been reset!");
+      });
+
+      // invalid
+      $("#email").on("invalid", function() {
+        alert("Invalid email format!");
+      });
+    });
+  </script>
+  <hr>
+
+</body>
+</html>

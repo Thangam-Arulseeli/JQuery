@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Events in Java Script</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input { padding: 8px; width: 250px; margin: 10px 0; }
+        #status { margin-top: 15px; font-weight: bold; }
+    </style>
+
+</head>
+<body>
+  <h4> Keyboard Events in jQuery </h4>
+<pre>
+    In jQuery, keyboard events are used to handle user interactions with the keyboard (pressing keys, releasing keys, etc.).
+    Here are some commonly used keyboard events in jQuery:  
+    Keyboard Events in jQuery
+
+      keydown()
+      Triggered when a key is pressed down.
+      Fires repeatedly if the key is held down.
+      Example: Detecting when the Enter key is pressed.
+
+      keyup()
+      Triggered when a key is released.
+      Example: Performing an action after typing a character.
+
+      keypress()
+      Triggered when a key that produces a character is pressed down.
+      Doesn’t detect special keys (Shift, Ctrl, Arrow keys, etc.) in modern browsers.
+      Example: Detecting when a letter key is pressed. 
+      Note: keypress is deprecated, better to use keydown or keyup.
+
+      focus() 
+      Triggered when an element gains focus (e.g., when a user clicks on an input field or tabs to it).
+      Example: Highlighting an input field when it gains focus.
+
+      blur()
+      Triggered when an element loses focus (e.g., when a user clicks away from an input field or tabs out of it).
+      Example: Validating input when an input field loses focus.  
+
+      change()
+      Triggered when the value of an input element changes and the element loses focus.
+      Example: Updating a preview when a user selects a different option from a dropdown.
+
+      input()
+      Triggered every time the value of an input element changes (more immediate than change()).
+      Example: Live-updating a character count as the user types in a textarea.  
+</pre>
+<!-- Example -->
+  <h4> jQuery Keyboard Events Demo - Example Program </h4>
+  <input type="text" id="inputField" placeholder="Type something..." />
+  <div id="status">Status: Waiting for input...</div>
+
+  <script>
+    $(document).ready(function() {
+        $("#inputField").keydown(function(event) {
+            $("#status").text("Status: Key Down - " + event.key);
+        });
+
+        $("#inputField").keyup(function(event) {
+            $("#status").text("Status: Key Up - " + event.key);
+        });
+
+        $("#inputField").focus(function() {
+            $("#status").text("Status: Input field focused");
+        });
+
+        $("#inputField").blur(function() {
+            $("#status").text("Status: Input field lost focus");
+        });
+
+        $("#inputField").change(function() {
+            $("#status").text("Status: Input value changed to '" + $(this).val() + "'");
+        });
+
+        $("#inputField").on('input', function() {
+            $("#status").text("Status: Current input value - '" + $(this).val() + "'");
+        });
+        /*
+            .on('input', function() { ... }) -- Attaches an input event handler.
+            The input event is triggered every time the value changes in the field:
+                Typing a character /  Deleting text/  Copy-paste into the field
+
+            $(this).val() 
+                $(this) refers to the input element (#inputField).
+                .val() gets its current value.
+
+            $("#status").text("...")  -- Updates the text of the element with id="status".
+        */
+    });
+        
+  </script>
+  <hr>
+  <pre>
+    Summary:
+    keydown() → key pressed down  
+    keyup() → key released  
+    keypress() → key that produces a character pressed down (deprecated)  
+    focus() → element gains focus  
+    blur() → element loses focus  
+    change() → input value changed and element loses focus  
+    input() → input value changes (immediate) 
+</pre>
+<hr>
+
+ <label>Type something:</label><br>
+    <input type="text" id="myInput" placeholder="Start typing...">
+
+    <p id="status"></p>
+
+    <script>
+        $(document).ready(function () {
+
+            // Keydown
+            $("#myInput").keydown(function (event) {
+                $("#status").text("Key Down: " + event.key + " (Code: " + event.keyCode + ")");
+            });
+
+            // Keyup
+            $("#myInput").keyup(function (event) {
+                $("#status").text("Key Up: " + event.key + " (Code: " + event.keyCode + ")");
+            });
+
+            // Keypress (Deprecated, but still works for letters/numbers)
+            $("#myInput").keypress(function (event) {
+                $("#status").text("Key Press: " + event.key + " (Code(Key Press): " + event.which + ")");
+            });
+
+        });
+    </script>
+<hr>
+<pre>
+  How this works:
+
+        keydown → fires when you press a key (even before the character appears).
+        keypress → fires when a character-producing key is pressed (e.g., letters, numbers).
+        keyup → fires when you release the key.
+        Example Use Cases
+        keydown → Detect shortcuts (e.g., Ctrl + S).
+        keyup → Form validations after typing.
+        keypress → Typing games, live text effects.
+        NOTE:
+         event.key  -- (modern, recommended  -- Gives the actual character when the key is pressed (a or 1)
+         event.which --  (deprecated, old jQuery way) -- Returns the numeric key code of the key pressed. (a -> 97,"Enter" → 13)
+        event.keyCode -- (deprecated in modern browsers) -- Returns the numeric code for the key. Similar to event.which, but older DOM standard.
+</pre>
+</body>
+</html>

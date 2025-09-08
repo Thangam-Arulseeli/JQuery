@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> animate() </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    button { margin: 5px; padding: 8px 12px; }
+    #box {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background: lightcoral;
+      border: 2px solid darkred;
+      margin-top: 20px;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h4> Animate in JQuery </h4>
+  <pre> 
+    Animate() in jQuery is used to create custom animations by changing CSS properties of elements 
+    over a specified duration. It allows you to animate multiple CSS properties simultaneously, 
+    providing a way to create dynamic and engaging user interfaces.
+
+    jQuery animate() Method
+
+Used to create custom animations by changing CSS properties gradually.
+
+Syntax:
+
+$(selector).animate({cssProperties}, duration, callback);
+
+
+Example:
+
+$("#box").animate({ left: "200px", opacity: 0.5 }, 1000);
+
+🔹 Stopping Animations
+
+stop() → Stops the currently running animation immediately.
+
+You can use stop(true, true) to clear the animation queue and jump to the end.
+
+🔹 Chaining Animations
+
+jQuery allows chaining multiple animations or effects on the same element.
+
+Example:
+
+$("#box").slideUp().slideDown().fadeOut().fadeIn();
+
+🔹 Duration Options 
+You can specify the speed of the animation using predefined strings ("slow", "fast") or milliseconds (e.g., 1000 for 1 second).
+🔹 Callback Function  
+A function that is executed after the animation completes.
+Example:
+$("#box").animate({ left: "200px" }, 1000, function() {
+  alert("Animation complete!");
+});
+🔹 Easing Effects
+You can use easing functions to control the acceleration of the animation.
+Example:
+$("#box").animate({ left: "200px" }, 1000, "swing");
+🔹 Important Note 
+By default, only numeric CSS properties can be animated (like width, height, opacity, etc.).
+To animate non-numeric properties, you may need to use plugins or workarounds.
+
+
+  </pre>
+
+  <hr>
+  <h5> jQuery animate() Demo - Example Program </h5>
+  <h2>jQuery Custom Animations (animate), Stop, and Chaining</h2>
+
+  <button id="btnAnimate">Animate</button>
+  <button id="btnStop">Stop</button>
+  <button id="btnChain">Chain Animations</button>
+
+  <div id="box">Box</div>
+
+  <script>
+    $(document).ready(function() {
+      
+      // Custom animate
+      $("#btnAnimate").click(function() {
+        $("#box").animate({
+          left: "300px",
+          width: "200px",
+          height: "200px",
+          opacity: 0.5
+        }, 2000);
+      });
+
+      // Stop animation
+      $("#btnStop").click(function() {
+        $("#box").stop(true, true); // stop current + clear queue
+      });
+
+      // Chaining animations
+      $("#btnChain").click(function() {
+        $("#box")
+          .animate({ left: "50px" }, 1000)
+          .animate({ top: "50px" }, 1000)
+          .animate({ width: "150px", height: "150px" }, 1000)
+          .animate({ opacity: 1 }, 1000)
+          .slideUp(1000)
+          .slideDown(1000);
+      });
+
+    });
+  </script>
+
+<hr>
+
+<!--Example program with all the animation concepts -->
+  <h5> Example program with all the animation concepts </h5>
+  <pre>
+    Features: 
+A button to start the animation sequence. 
+A div that moves, resizes, and changes opacity when the button is clicked.
+A second button to stop the animation at any time.
+    </pre>
+  <!-- jQuery animate() - Manipulate Multiple Properties -->
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("#ani1").animate({
+          left: '250px',
+          opacity: '0.5',
+          height: '100px',
+          width: '100px'
+        });
+      });
+    }); 
+  </script>
+  <div id="ani1" style="width:50px;height:50px;position:absolute;background-color:blue;"></div>
+  <hr>
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("#ani1").animate({
+          left: '250px',
+          height: '+=50px',
+          width: '+=50px'
+        });
+      });
+    }); 
+  </script>
+  <hr>
+  <script>
+    //toggle
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("#ani1").animate({
+          height: 'toggle'
+          //width: 'toggle'
+        });
+      });
+    });
+  </script>
+  <hr>  
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("#ani1").animate({ left: '+=150px' });
+      });
+    }); 
+  </script>
+  <hr>    
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("#ani1").animate({ left: '500px' });
+      });
+    });
+  </script>
+  <hr>
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("div")
+          .animate({ left: '400px' }, "slow")
+          .animate({ fontSize: '40px' }, 3000)
+          .css({ color: 'pink' })
+          .css({ background: 'purple' })
+      });
+    }); 
+  </script>
+  <hr>
+  <!--Example program with all the animation concepts -->
+    
+  </body>
+</html>

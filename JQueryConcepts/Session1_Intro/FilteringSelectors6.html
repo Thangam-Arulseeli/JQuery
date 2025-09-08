@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtering Selectors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h4> Filtering Selectors in jQuery </h4>
+<pre>
+    Filtering selectors are used to select a subset of elements from a larger set of matched elements.
+    They help refine your selection based on specific criteria.
+
+    Here are some commonly used filtering selectors in jQuery:  
+1. :first
+    Selects the first element in a set of matched elements.
+      Example: $("p:first") selects the first <p> element.
+2. :last
+    Selects the last element in a set of matched elements.
+      Example: $("p:last") selects the last <p> element.
+3. :even
+    Selects all even-indexed elements in a set of matched elements (0-based index). 
+      Example: $("li:even") selects all even-indexed <li> elements (0, 2, 4, ...).
+4. :odd
+    Selects all odd-indexed elements in a set of matched elements (0-based index).
+      Example: $("li:odd") selects all odd-indexed <li> elements (1, 3, 5, ...).
+5. :eq(index)
+    Selects the element at the specified index in a set of matched elements (0-based index
+      Example: $("li:eq(2)") selects the third <li> element.
+6. :gt(index)
+    Selects all elements with an index greater than the specified index (0-based index).
+      Example: $("li:gt(2)") selects all <li> elements with an index greater than 2 (3, 4, 5, ...).
+7. :lt(index)
+    Selects all elements with an index less than the specified index (0-based index).
+      Example: $("li:lt(2)") selects all <li> elements with an index less than 2 (0, 1).
+8. :not(selector)
+    Selects all elements that do not match the specified selector.
+      Example: $("p:not(.intro)") selects all <p> elements that do not have the class "intro".
+</pre>
+<hr>
+  <style>
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover { background-color: #2980b9; }
+    .intro { font-weight: bold; color: darkorange; }
+    p { margin: 10px 0; padding: 10px; border-left: 5px solid #3498db; }
+    ul { list-style-type: disc; margin: 10px 0; }
+    li { margin: 5px 0; }
+    #debug { margin-top:12px; font-size:14px; color:#333; }
+  </style>
+
+<h4> jQuery Filtering Selector Demo - Example Program </h4>
+  <h3> Example Program </h3>  
+  <p class="intro">This is an introductory paragraph.</p>
+  <p>This is a regular paragraph.</p>
+  <p>This is another regular paragraph.</p>
+
+  <ul>
+    <li>List item 1</li> <!-- index 0 -->
+    <li>List item 2</li> <!-- index 1 -->
+    <li>List item 3</li> <!-- index 2 -->
+    <li>List item 4</li> <!-- index 3 -->
+    <li>List item 5</li> <!-- index 4 -->
+    <li>List item 6</li> <!-- index 5 -->
+  </ul>
+
+  <button id="btn1">Apply Filtering Selectors</button>
+
+  <div id="debug"></div>
+
+  <script>
+    $(function(){
+      $("#btn1").on("click", function(){
+
+        // reset any previous inline styles so you can click multiple times
+        $("ul li").css({
+          "font-weight": "",
+          "font-style": "",
+          "text-decoration": "",
+          "color": "",
+          "background-color": "",
+          "border-bottom": ""
+        });
+        $("p").css({
+          "color": "",
+          "font-size": ""
+        });
+
+        // 1) Select the third <li> element (index 2) and make it bold
+        // use .eq() on a specific collection (ul li)
+        $("ul li").eq(2).css("font-weight", "bold");
+
+        // 2) Select all <li> elements with index greater than 2 and italicize them
+        // use .filter(function(index){...}) for clarity
+        $("ul li").filter(function(i){
+          return i > 2;
+        }).css("font-style", "italic");
+
+        // 3) Select all <li> elements with index less than 2 and underline them
+        $("ul li").filter(function(i){
+          return i < 2;
+        }).css("text-decoration", "underline");
+
+        // 4) Select all <p> elements that do not have the class 'intro' and change their font size
+        // .not(".intro") is the clear, idiomatic way
+        $("p").not(".intro").css("font-size", "20px");
+
+        // show debug counts/text for verification
+        const eqText = $("ul li").eq(2).text() || "(none)";
+        const gtTexts = $("ul li").filter(function(i){return i>2}).map(function(){return $(this).text();}).get().join(", ") || "(none)";
+        const ltTexts = $("ul li").filter(function(i){return i<2}).map(function(){return $(this).text();}).get().join(", ") || "(none)";
+        const pNotIntro = $("p").not(".intro").map(function(){return $(this).text();}).get().join(" || ") || "(none)";
+
+        $("#debug").html(
+          "<b>Debug:</b><br>" +
+          "3rd li (eq(2)): " + eqText + "<br>" +
+          "gt(2): " + gtTexts + "<br>" +
+          "lt(2): " + ltTexts + "<br>" +
+          "p:not(.intro): " + pNotIntro
+        );
+      });
+    });
+  </script>
+
+<!-- <script>
+    $(document).ready(function(){
+        $("button").click(function(){   
+            // Select all <li> elements and highlight even indexed ones
+           // $("li:even").css("background-color", "lightblue");
+            
+            // Select all <li> elements and highlight odd indexed ones
+          //  $("li:odd").css("background-color", "lightgreen");
+            
+            // Select the first <p> element and change its text color
+            $("p:first").css("color", "red");
+            
+            // Select the last <p> element and change its text color
+            $("p:last").css("color", "blue");
+            
+            // Select the third <li> element (index 2) and make it bold
+            $("li:eq(2)").css("font-weight", "bold");
+            
+            // Select all <li> elements with index greater than 2 and italicize them
+            $("li:gt(2)").css("font-style", "italic");
+            
+            // Select all <li> elements with index less than 2 and underline them
+            $("li:lt(2)").css("text-decoration", "underline");
+            
+            // Select all <p> elements that do not have the class 'intro' and change their font size
+            $("p:not(.intro)").css("font-size", "20px");
+        }); 
+    });
+  </script> -->
+
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Events in jquery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .box {
+            width: 150px; height: 150px;
+            background: lightblue;
+            margin: 20px; padding: 20px;
+            text-align: center; line-height: 150px;
+            border: 2px solid #333;
+        }
+        .highlight { background: yellow; }
+    </style>
+    <style>
+        .box {
+            width: 200px; height: 100px;
+            background: lightgray; margin: 10px; padding: 10px;
+            text-align: center; line-height: 100px; cursor: pointer;
+        }
+        .highlight { background: yellow; }
+    </style>
+</head>
+<body>
+  <h4>  Mouse Events in JQuery </h4>
+  
+  <pre>
+    In jQuery, mouse events are used to handle user interactions with the mouse (clicking, hovering, moving, pressing, etc.).
+    Here are some commonly used mouse events in jQuery:
+1. click()
+    Triggered when an element is clicked.
+      Example: $("#myButton").click(function() { alert("Button clicked!"); });    
+2. dblclick()
+    Triggered when an element is double-clicked.
+      Example: $("#myDiv").dblclick(function() { $(this).css("background-color", "yellow"); });   
+3. mouseenter()
+    Triggered when the mouse pointer enters the area of an element.
+      Example: $("#myDiv").mouseenter(function() { $(this).css("background-color", "lightblue"); });  
+4. mouseleave()
+    Triggered when the mouse pointer leaves the area of an element.
+      Example: $("#myDiv").mouseleave(function() { $(this).css("background-color", "white"); });  
+5. mousemove()
+    Triggered when the mouse pointer moves within the area of an element.
+      Example: $("#myDiv").mousemove(function(event) { $("#coords").text("X: " + event.pageX + ", Y: " + event.pageY); });  
+6. mousedown()
+    Triggered when a mouse button is pressed down on an element.
+      Example: $("#myDiv").mousedown(function() { $(this).css("border", "2px solid red"); });
+7. mouseup()
+    Triggered when a mouse button is released over an element.  
+      Example: $("#myDiv").mouseup(function() { $(this).css("border", "none"); });
+8. hover(handlerIn, handlerOut)
+    A shorthand for mouseenter and mouseleave. It takes two functions: one for when the mouse enters, and one for when it leaves.
+      Example: $("#myDiv").hover( function() { $(this).css("background-color", "lightgreen"); }, function() { $(this).css("background-color", "white"); } );
+9. contextmenu()
+    Triggered when the right mouse button is clicked (to open the context menu).
+      Example: $("#myDiv").contextmenu(function(event) { event.preventDefault(); alert("Right-click detected!"); });
+
+Summary:
+  
+click() → single click
+dblclick() → double click     
+mouseenter() → mouse enters element
+mouseleave() → mouse leaves element
+mousemove() → mouse moves within element  
+mousedown() → mouse button pressed down
+mouseup() → mouse button released
+hover() → mouse enters and leaves element
+contextmenu() → right-click (context menu)
+ </pre>
+<hr>
+  <h4> jQuery Mouse Events Demo - Example Program </h4>
+  <div class="box" id="myBox">Hover or Click Me!</div>
+  <div id="coords">X: , Y: </div>
+  
+  <script>
+    $(document).ready(function(){
+        // Click event
+        $("#myBox").click(function() {
+            alert("Box clicked!");
+        });
+        
+        // Double-click event
+        $("#myBox").dblclick(function() {
+            $(this).toggleClass("highlight");
+        });
+        
+        // Mouse enter event
+        $("#myBox").mouseenter(function() {
+            $(this).css("background-color", "lightblue");
+        });
+        
+        // Mouse leave event
+        $("#myBox").mouseleave(function() {
+            $(this).css("background-color", "white");
+        });
+        
+        // Mouse move event
+        $("#myBox").mousemove(function(event) {
+            $("#coords").text("X: " + event.pageX + ", Y: " + event.pageY);
+        });
+        
+        // Mouse down event
+        $("#myBox").mousedown(function() {
+            $(this).css("border", "2px solid red");
+        });
+        
+        // Mouse up event
+        $("#myBox").mouseup(function() {
+            $(this).css("border", "2px solid #333");
+        });
+        
+        // Hover event
+        $("#myBox").hover(
+            function() { $(this).css("background-color", "lightgreen"); },
+            function() { $(this).css("background-color", "white"); }
+        );
+        
+        // Context menu (right-click) event
+        $("#myBox").contextmenu(function(event) {
+            event.preventDefault();  // Prevents the browser’s default right-click menu from appearing.
+            alert("Right-click detected!");  // you can define your own behavior (e.g., showing a custom menu, alert, etc.).
+        });
+    });
+  </script>
+  <hr>
+  <h3> Explanation: </h3>
+  <pre> 
+1. We create a div with the class "box" and id "myBox" to demonstrate mouse events.
+2. We use jQuery to attach various mouse event handlers to the div: 
+    - click(): Shows an alert when the box is clicked.
+    - dblclick(): Toggles the "highlight" class on double-click.
+    - mouseenter(): Changes background color when the mouse enters the box.
+    - mouseleave(): Resets background color when the mouse leaves the box.
+    - mousemove(): Updates and displays the current mouse coordinates within the box.
+    - mousedown(): Changes border color when a mouse button is pressed down.
+    - mouseup(): Resets border color when the mouse button is released.
+    - hover(): Changes background color on hover and resets it when the mouse leaves.
+    - contextmenu(): Prevents the default context menu and shows an alert on right-click. 
+3. Each event handler uses jQuery methods like css() and toggleClass() to manipulate the box's appearance based on user interactions. 
+  </pre>
+<hr>
+
+<h2>jQuery Mouse Events Example</h2>
+
+    <div class="box" id="box1">Click Me</div>
+    <div class="box" id="box2">Hover Me</div>
+    <div class="box" id="box3">Move Mouse Here</div>
+    <p id="status"></p>
+
+    <script>
+        $(document).ready(function () {
+            // Click Event
+            $("#box1").click(function () {
+                $(this).toggleClass("highlight");
+                $("#status").text("Box 1 was clicked!");
+            });
+
+            /*
+            .toggleClass("highlight")
+                    If #box1 does not have the class highlight, it will be added.
+                    If it already has the class highlight, it will be removed.
+                    This is useful for toggling styles (e.g., highlight on/off).
+            */
+
+            // Double Click Event
+            $("#box1").dblclick(function () {
+                $("#status").text("Box 1 was double-clicked!");
+            });
+
+            // Hover (mouseenter + mouseleave)
+            $("#box2").hover(
+                function () { $(this).css("background", "lightgreen"); }, // Mouse enters
+                function () { $(this).css("background", "lightblue"); }  // Mouse leaves
+            );
+            /*hover(handlerIn, handlerOut)
+                jQuery’s hover() method takes two functions:
+                handlerIn: executed when the mouse enters the element.
+                handlerOut: executed when the mouse leaves the element.
+            */
+
+            // Mouse Enter & Leave
+            $("#box2").mouseenter(function () {
+                $("#status").text("Mouse entered Box 2");
+            }).mouseleave(function () {
+                $("#status").text("Mouse left Box 2");
+            });
+
+            // Mouse Move
+            $("#box3").mousemove(function (event) {
+                $("#status").text("Mouse position - X: " + event.pageX + ", Y: " + event.pageY);
+            });
+
+            // Mouse Down & Up
+            $("#box3").mousedown(function () {
+                $("#status").text("Mouse button pressed inside Box 3");
+            }).mouseup(function () {
+                $("#status").text("Mouse button released inside Box 3");
+            });
+        });
+    </script>
+<hr>
+<hr>
+<h2>jQuery Mouse Events Example</h2>
+
+    <div id="box11" class="box">Click Me</div>
+    <div id="box22" class="box">Double Click Me</div>
+    <div id="box33" class="box">Hover Over Me</div>
+    <div id="box44" class="box">Mouse Move Here</div>
+    <p id="coords"></p>
+
+    <script>
+        $(document).ready(function () {
+            // 1. Click
+            $("#box11").click(function () {
+                $(this).toggleClass("highlight").text("Clicked!");
+            });
+
+            // 2. Double Click
+            $("#box22").dblclick(function () {
+                $(this).toggleClass("highlight").text("Double Clicked!");
+            });
+
+            // 3. Mouse Enter / Leave
+            $("#box33").mouseenter(function () {
+                $(this).css("background", "lightgreen").text("Mouse Entered!");
+            }).mouseleave(function () {
+                $(this).css("background", "lightgray").text("Mouse Left!");
+            });
+
+            // 4. Mouse Move
+            $("#box44").mousemove(function (event) {
+                $("#coords").text("X: " + event.pageX + ", Y: " + event.pageY);
+            });
+
+            // 5. Mouse Down / Up
+            $("#box11").mousedown(function () {
+                $(this).text("Mouse Down!");
+            }).mouseup(function () {
+                $(this).text("Mouse Up!");
+            });
+        });
+    </script>
+</body>
+</html>

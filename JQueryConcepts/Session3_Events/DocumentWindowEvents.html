@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document and Window Events </title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #info { 
+      position: fixed; 
+      top: 10px; 
+      right: 10px; 
+      background: rgb(207, 130, 182); 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+    }
+    .spacer { height: 2000px; } /* to enable scrolling */
+  </style>
+</head>
+<body>
+  <h4> Document and Window Events in jQuery </h4>
+<pre>
+    In jQuery, document and window events are used to handle interactions with the entire web page or browser window.
+    Here are some commonly used document and window events in jQuery:
+1. ready()
+    Triggered when the DOM is fully loaded and ready to be manipulated.
+      Example: $(document).ready(function() { alert("DOM is ready!"); });
+
+2. load()
+    Triggered when the entire page (including images, iframes, etc.) is fully loaded.
+      Example: $(window).on("load", function() { alert("Page is fully loaded!"); });
+
+    Other Way:
+        $(window).load(function() {
+             alert("Page is fully loaded!");
+        });
+
+    Summary
+        Modern jQuery → $(window).on("load", function() { ... }); 
+        Old jQuery → $(window).load(function() { ... }); (deprecated) 
+        Native JS → window.onload = function() { ... }; or window.addEventListener("load", fn);
+
+3. resize()
+    Triggered when the browser window is resized.
+      Example: $(window).resize(function() { $("#status").text("Window resized!"); });
+
+4. scroll()
+    Triggered when the user scrolls the page.
+      Example: $(window).scroll(function() { $("#status").text("Page scrolled!"); });
+
+5. unload()
+    Triggered when the user is about to leave the page (e.g., closing the tab or navigating away).
+      Example: $(window).on("unload", function() { alert("Leaving the page!"); });
+
+6. beforeunload()
+    Triggered before the user leaves the page, allowing you to prompt them with a confirmation dialog.
+      Example: $(window).on("beforeunload", function() { return "Are you sure you want to leave?"; });
+
+7. error()
+    Triggered when an error occurs while loading an element (like an image).
+      Example: $("img").on("error", function() { $(this).attr("src", "default.jpg"); });  
+
+8. contextmenu()
+    Triggered when the right mouse button is clicked (to open the context menu) on the document.
+      Example: $(document).on("contextmenu", function(event) { event.preventDefault(); alert("Right-click detected!"); });
+
+9. focusin() and focusout()
+    Similar to focus() and blur(), but they bubble up the DOM tree, allowing you to handle focus events on parent elements.
+      Example: $(document).on("focusin", "input", function() { $(this).addClass("highlight"); });
+               $(document).on("focusout", "input", function() { $(this).removeClass("highlight"); }); 
+
+10. click()
+    Triggered when any part of the document is clicked.
+      Example: $(document).click(function() { $("#status").text("Document clicked!"); });
+
+11. dblclick()
+    Triggered when any part of the document is double-clicked.
+      Example: $(document).dblclick(function() { $("#status").text("Document double-clicked!"); }); 
+
+12. keydown(), keyup(), keypress()
+    Triggered when a key is pressed, released, or pressed down (for character keys) 
+      Example: $(document).keydown(function(event) { $("#status").text("Key down: " + event.key); });
+               $(document).keyup(function(event) { $("#status").text("Key up: " + event.key); });
+               $(document).keypress(function(event) { $("#status").text("Key press: " + event.key); });
+</pre>
+<!-- Example -->
+  <h4> jQuery Document and Window Events Demo - Example Program </h4>
+  <input type="text" placeholder="Type something..." />
+  <div id="status">Status messages will appear here.</div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input { padding: 8px; width: 250px; margin: 10px 0; }
+    #status { margin-top: 15px; font-weight: bold; }
+    .highlight { background-color: lightyellow; }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $("#status").text("DOM is ready!");
+
+      $(window).on("load", function() {
+        $("#status").text("Page is fully loaded!");
+      });
+
+      $(window).resize(function() {
+        $("#status").text("Window resized!");
+      });
+
+      $(window).scroll(function() {
+        $("#status").text("Page scrolled!");
+      });
+
+      $(window).on("beforeunload", function() {
+        return "Are you sure you want to leave?";
+      });
+
+      $("img").on("error", function() {
+        $(this).attr("src", "../Session1_Intro/Flower1.jpg");
+      });
+
+      $(document).on("contextmenu", function(event) {
+        event.preventDefault();
+        alert("Right-click detected!");
+      });
+
+      $(document).on("focusin", "input", function() {
+        $(this).addClass("highlight");
+      });
+
+      $(document).on("focusout", "input", function() {
+        $(this).removeClass("highlight");
+      });
+
+      $(document).click(function() {
+        $("#status").text("Document clicked!");
+      });
+
+      $(document).dblclick(function() {
+        $("#status").text("Document double-clicked!");
+      });
+
+      $(document).keydown(function(event) {
+        $("#status").text("Key down: " + event.key);
+      });
+
+      $(document).keyup(function(event) {
+        $("#status").text("Key up: " + event.key);
+      });
+
+      $(document).keypress(function(event) {
+        $("#status").text("Key press: " + event.key);
+       });
+     });
+   </script>
+   <hr>
+   <hr>
+
+   <h2>jQuery Document & Window Events Demo</h2>
+
+  <p>Open the console (F12) to see some logs.</p>
+  
+  <div id="info">
+    <p><b>Window Info:</b></p>
+    <p id="size"></p>
+    <p id="scroll"></p>
+  </div>
+
+  <!-- Broken image for error event demo -->
+  <img src="nonexistent.jpg" alt="Broken Image" width="200" height="100">
+
+  <div class="spacer"></div>
+
+  <script>
+    // 1. Document Ready
+    $(document).ready(function() {
+      console.log("✅ Document is ready (DOM loaded).");
+    });
+
+    // 2. Window Load
+    $(window).on("load", function() {
+      console.log("✅ Window fully loaded (including images, CSS, etc.).");
+      $("#size").text("Window size: " + $(window).width() + " x " + $(window).height());
+    });
+
+    // 3. Resize Event
+    $(window).resize(function() {
+      $("#size").text("Window size: " + $(window).width() + " x " + $(window).height());
+      console.log("📐 Window resized.");
+    });
+
+    // 4. Scroll Event
+    $(window).scroll(function() {
+      let scrollPos = $(window).scrollTop();
+      $("#scroll").text("Scroll position: " + scrollPos + "px");
+      console.log("🖱️ Page scrolled to: " + scrollPos + "px");
+    });
+
+    // 5. Unload Event
+    $(window).on("unload", function() {
+      console.log("❌ Page is unloading...");
+    });
+
+    // 6. BeforeUnload Event
+    $(window).on("beforeunload", function() {
+      return "Are you sure you want to leave this page?";
+    });
+
+    // 7. Error Event (for broken image)
+    $("img").on("error", function() {
+      alert("⚠️ Image failed to load: " + $(this).attr("src"));
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Basic Selectors Example</title>
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+  <h2>Basic Selectors - Introduction </h2>
+  <pre>
+  Introduction
+
+    In jQuery, selectors are used to "find" (select) HTML elements so we can work with them.
+    The syntax is very simple:
+
+        $("selector")
+            Here are the three most common basic selectors:
+                $("p") → selects all elements.
+                $("#id") → selects element by id.
+                $(".class") → selects elements by class name.
+    </pre>
+
+    <h2>jQuery Basic Selector Demo - Example Program</h2>
+
+    <!-- Element selector example -->
+    <p>This is paragraph 1</p>
+    <p>This is paragraph 2</p>
+
+    <!-- ID selector example -->
+    <h6 id="special">This paragraph has an ID.</h6>
+
+    <!-- Class selector example -->
+    <h5 class="important">This paragraph is important.</h5>
+    <h4 class="important">Another important paragraph.</h4>
+
+    <button id="btn1"d>Highlight by Element (p)</button>
+    <button id="btn2">Highlight by ID (#special)</button>
+    <button id="btn3">Highlight by Class (.important)</button>
+
+    <script>
+        $(document).ready(function(){
+            // Element selector → selects all <p> tags
+            $("#btn1").click(function(){
+                $("p").addClass("highlight");
+            });
+
+            // ID selector → selects element with id="special"
+            $("#btn2").click(function(){
+                $("#special").addClass("highlight");
+            });
+
+            // Class selector → selects all elements with class="important"
+            $("#btn3").click(function(){
+                $(".important").addClass("highlight");
+            });
+        });
+    </script>
+    <hr>
+    <h3>Explanation:</h3>
+    <pre>
+           $("#btn3") ->  Selects the element with id = "btn3" (usually a button).
+            .click(function(){ ... }) ->  Attaches a click event handler to that button.
+                    So, whenever the button is clicked, the function inside will run.
+            $(".important") ->  Selects all elements that have the class "important".
+            .addClass("highlight") -> Adds the CSS class "highlight" to all those selected elements.
+            This usually changes the style/appearance of those elements (based on how "highlight" is defined in CSS).
+    </pre>
+</body>
+</html>

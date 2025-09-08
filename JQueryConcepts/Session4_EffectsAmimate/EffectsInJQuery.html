@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+< lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JQuery Effects</title>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    button { margin: 5px; padding: 8px 12px; }
+    #box {
+      width: 200px;
+      height: 150px;
+      background: lightgreen;
+      border: 2px solid green;
+      margin-top: 20px;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<>
+  <h4>JQuery Effects </h4>
+  <pre>
+    jQuery provides several built-in methods to create visual effects on HTML elements. 
+    These effects can enhance user experience by adding animations and transitions to your web pages. 
+    Here are some commonly used jQuery effects:
+🔹   1. Show / Hide / Toggle
+
+show() → Makes a hidden element visible.
+
+hide() → Hides a visible element.
+
+toggle() → Switches between show and hide automatically.
+
+🔹 2. Fade Effects
+
+fadeIn() → Fades in the element (increasing opacity).
+
+fadeOut() → Fades out the element (decreasing opacity).
+
+fadeToggle() → Switches between fade in and fade out.
+
+🔹 3. Slide Effects
+
+slideUp() → Slides the element up (hides).
+
+slideDown() → Slides the element down (shows).
+
+slideToggle() → Switches between slide up and down.
+🔹 4. Custom Animations
+animate() → Allows you to create custom animations by changing CSS properties over time.
+Example: $("#myDiv").animate({ left: '250px', opacity: '0.5' }, 1000);
+🔹 5. Chaining Effects
+You can chain multiple effects together for more complex animations.
+Example: $("#myDiv").fadeOut(1000).slideUp(1000).fadeIn(1000);
+🔹 6. Speed Options 
+You can control the speed of the effects using predefined strings ("slow", "fast") or milliseconds (e.g., 1000 for 1 second).
+Example: $("#myDiv").fadeIn("slow");
+Example: $("#myDiv").fadeIn(2000); // 2 seconds
+🔹 7. Callback Functions  
+Many effect methods accept a callback function that runs after the effect completes.
+Example: $("#myDiv").fadeOut(1000, function() { alert("Fade out complete!"); });
+🔹 8. Stopping Effects  
+stop() → Stops the currently running animation on the selected elements.
+Example: $("#myDiv").stop();
+🔹 9. Queueing Effects  
+By default, jQuery queues effects to run one after another. You can control this behavior using the queue parameter.
+Example: $("#myDiv").fadeIn().fadeOut(); // Runs one after the other
+Example: $("#myDiv").fadeIn().fadeOut().stop(true, true); // Stops and clears the queue
+🔹 10. Easing Effects 
+Easing functions control the acceleration of the animation. jQuery UI provides additional easing options.
+Example: $("#myDiv").animate({ left: '250px' }, { duration: 1000, easing: 'easeOutBounce' });
+
+  </pre>
+
+  <Hr></Hr>
+
+  <h5>Single Combined program for Jquery Effects </h5>
+  <pre>
+    Features:
+
+A green box (#box) is used to test all effects.
+
+Buttons demonstrate each effect (show, hide, toggle, fade, slide).
+
+"slow" makes the animations visible (you can also use "fast" or milliseconds like 1000).
+  </pre>
+  <!-- Show/Hide/Toggle -->
+  <button id="btnShow">Show</button>
+  <button id="btnHide">Hide</button>
+  <button id="btnToggle">Toggle</button>
+  <br><br>
+
+  <!-- FadeIn/FadeOut/FadeToggle -->
+  <button id="btnFadeIn">Fade In</button>
+  <button id="btnFadeOut">Fade Out</button>
+  <button id="btnFadeToggle">Fade Toggle</button>
+  <br><br>
+
+  <!-- SlideUp/SlideDown/SlideToggle -->
+  <button id="btnSlideUp">Slide Up</button>
+  <button id="btnSlideDown">Slide Down</button>
+  <button id="btnSlideToggle">Slide Toggle</button>
+
+  <div id="box">Hello!</div>
+
+  <script>
+    $(document).ready(function() {
+      
+      // Show/Hide/Toggle
+      $("#btnShow").click(function() {
+        $("#box").show("slow");
+      });
+
+      $("#btnHide").click(function() {
+        $("#box").hide("slow");
+      });
+
+      $("#btnToggle").click(function() {
+        $("#box").toggle("slow");
+      });
+
+      // Fade Effects
+      $("#btnFadeIn").click(function() {
+        $("#box").fadeIn("slow");
+      });
+
+      $("#btnFadeOut").click(function() {
+        $("#box").fadeOut("slow");
+      });
+
+      $("#btnFadeToggle").click(function() {
+        $("#box").fadeToggle("slow");
+      });
+
+      // Slide Effects
+      $("#btnSlideUp").click(function() {
+        $("#box").slideUp("slow");
+      });
+
+      $("#btnSlideDown").click(function() {
+        $("#box").slideDown("slow");
+      });
+
+      $("#btnSlideToggle").click(function() {
+        $("#box").slideToggle("slow");
+      });
+
+    });
+  </script>
+
+</body>
+</html>
