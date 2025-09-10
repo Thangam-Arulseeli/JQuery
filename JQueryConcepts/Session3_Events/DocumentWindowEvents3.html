@@ -118,15 +118,30 @@
         $(this).attr("src", "../Session1_Intro/Flower1.jpg");
       });
 
-      $(document).on("contextmenu", function(event) {
-        event.preventDefault();
-        alert("Right-click detected!");
-      });
+      // $(document).on("contextmenu", function(event) {
+      //   event.preventDefault();
+      //   alert("Right-click detected!");
+      // });
 
       $(document).on("focusin", "input", function() {
         $(this).addClass("highlight");
       });
 
+      /*
+      $(document).on("focusin", "input", ... )
+        This uses event delegation.
+        It means: “Whenever any <input> element inside the document gets focus, run this function.”
+        Works for both existing and dynamically created <input> elements.
+
+        focusin event
+        Similar to focus, but it bubbles up the DOM (so you can delegate it at the document level).
+        Triggers when an input element becomes active (clicked into or navigated to with Tab key).
+
+        $(this).addClass("highlight")
+        this refers to the input element that received focus.
+        The code adds a CSS class named "highlight" to that input field.
+      */
+     
       $(document).on("focusout", "input", function() {
         $(this).removeClass("highlight");
       });
@@ -166,7 +181,7 @@
   </div>
 
   <!-- Broken image for error event demo -->
-  <img src="nonexistent.jpg" alt="Broken Image" width="200" height="100">
+  <img src="../Session1_Intro/Flower1.jpg" alt="Broken Image" width="200" height="100">
 
   <div class="spacer"></div>
 
@@ -207,9 +222,13 @@
 
     // 7. Error Event (for broken image)
     $("img").on("error", function() {
-      alert("⚠️ Image failed to load: " + $(this).attr("src"));
+      alert("⚠️ Image failed to load: " + $(this).attr("src") + " 😥 ");
     });
   </script>
   
+  NOTE: We can get emojis (usally a unicode character) while display the details (Browser supports emojis)
+    1. Windows + .
+    2. Emojipedia.org
+
 </body>
 </html>

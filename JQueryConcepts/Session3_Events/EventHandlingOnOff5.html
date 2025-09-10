@@ -15,74 +15,60 @@
 <body>
   <p4> jQuery Event handling methods (on(), off()) with Multiple Events + Reset/Re-Enable</p4>
 <pre>
-    In jQuery, event handling methods are used to attach and manage event listeners on HTML elements. The two primary methods for event handling in jQuery are .on() and .off().  
-on() Method
+    In jQuery, event handling methods are used to attach and manage event listeners on HTML elements. 
+    The two primary methods for event handling in jQuery are .on() and .off().  
 
-Used to attach one or more event handlers to selected elements.
+    on() Method
+        Used to attach one or more event handlers to selected elements.
+        Replaces older methods like .click(), .bind(), .delegate().
+        Supports multiple events, event delegation, and passing data.
 
-Replaces older methods like .click(), .bind(), .delegate().
+    off() Method
+        Used to remove event handlers attached using .on().
 
-Supports multiple events, event delegation, and passing data.
+    Useful when you want to disable certain interactions after a condition.
+    Supports removing specific handlers or all handlers for an event.
 
-off() Method
+    Example Usage
+        $(selector).on(event, childSelector, data, function)
+            Attaches an event handler to the selected elements.
+            - event: The event type (e.g., "click", "mouseover").
+            - childSelector: (Optional) A selector string to filter the descendants of the selected elements that trigger the event.
+            - data: (Optional) Data to be passed to the event handler.
+            - function: The function to execute when the event is triggered.
 
-Used to remove event handlers attached using .on().
+        $(selector).off(event, childSelector, function)
+            Removes an event handler from the selected elements.
+            - event: The event type to remove (e.g., "click").
+            - childSelector: (Optional) A selector string to filter the descendants of the selected elements. 
+            - function: (Optional) The specific function to remove.
 
-Useful when you want to disable certain interactions after a condition.
-Supports removing specific handlers or all handlers for an event.
-Example Usage
-$(selector).on(event, childSelector, data, function)
-Attaches an event handler to the selected elements.
-- event: The event type (e.g., "click", "mouseover").
-- childSelector: (Optional) A selector string to filter the descendants of the selected elements that trigger the event.
-- data: (Optional) Data to be passed to the event handler.
-- function: The function to execute when the event is triggered.
-$(selector).off(event, childSelector, function)
-Removes an event handler from the selected elements.
-- event: The event type to remove (e.g., "click").
-- childSelector: (Optional) A selector string to filter the descendants of the selected elements. 
-- function: (Optional) The specific function to remove.
-
-Key Differences Between .on() and .off()
-Method	Purpose
-.on()	Attach event(s) to elements (supports multiple events and delegation)
-.off()	Remove event(s) attached via .on()
+        Key Differences Between .on() and .off()
+        Method	Purpose
+            .on()	Attach event(s) to elements (supports multiple events and delegation)
+            .off()	Remove event(s) attached via .on()
 </pre>
 
 <hr>
 <pre>
   How it works:
-
-Click Me button → The main button students will test.
-
-Enable Click Event → Uses .on() to attach the handler.
-
-Disable Click Event → Uses .off() to remove the handler.
-
-Status message updates live to show whether the event is active.
+      Click Me button → The main button students will test.
+      Enable Click Event → Uses .on() to attach the handler.
+      Disable Click Event → Uses .off() to remove the handler.
+      Status message updates live to show whether the event is active.
 
 
 Features in this demo:
+      Click Event → Shows timestamp when clicked.
+      Double-Click Event → Shows timestamp when double-clicked.
+      Hover Event → Changes button color on mouse enter/leave.
+      Enable / Disable buttons → Attach/remove handlers with .on() and .off().
+      Live status message shows which event was triggered or enabled/disabled.
 
-Click Event → Shows timestamp when clicked.
-
-Double-Click Event → Shows timestamp when double-clicked.
-
-Hover Event → Changes button color on mouse enter/leave.
-
-Enable / Disable buttons → Attach/remove handlers with .on() and .off().
-
-Live status message shows which event was triggered or enabled/disabled.
-
-
-
-Enable/disable Click, Double-Click, Hover individually.
-
-Reset All Events to remove all handlers.
-
-Re-Enable All Events to quickly restore them.
-
-Watch the status message update with each interaction.
+      Enable/disable Click, Double-Click, Hover individually.
+      Reset All Events to remove all handlers.
+      Re-Enable All Events to quickly restore them.
+      Watch the status message update with each interaction.
 </pre>
 
 <hr>
