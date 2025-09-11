@@ -1,0 +1,5 @@
+Create a web page with required elements to demonstrate 
+*** All the selectors (Basic selectors and all other selectors)
+*** To use the following methods
+	hide(), unhide(), addClass(), removeClass()
+	on(), css(), toggleClass() 

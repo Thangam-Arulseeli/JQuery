@@ -27,7 +27,9 @@
             $( "#automplete-1" ).autocomplete
             ({
                source: autocomp,
-               autoFocus:true,
+               autoFocus:true,  // If autoFocus was false (default), nothing is pre-selected; 
+               // the user must use arrow keys to pick a suggestion before Enter. 
+               // [autoFocus: true, Automatically highlights the first suggestion in the autocomplete dropdown]
                minLength:2,   
                delay:2000,   
             });
@@ -38,17 +40,15 @@
    <body>
        <h1>AUTOCOMPLETE</h1>
        <pre>
-        Auto completion is a mechanism frequently used in modern websites to provide the user with a list of suggestions for the beginning of the word,
-        which he/she has typed in a text box.
-        
-        The user can then select an item from the list, which will be displayed in the input field.
-        
-        This feature prevents the user from having to enter an entire word or a set of words.
-
-        JQueryUI provides an autocomplete widget — a control that acts a lot like a select dropdown, 
-        but filters the choices to present only those that match what the user is typing into a control. 
-        
-        jQueryUI provides the autocomplete() method to create a list of suggestions below the input field and adds new CSS classes to the elements concerned to give them the appropriate style.
+            ** Auto completion is a mechanism frequently used in modern websites to provide 
+                  the user with a list of suggestions for the beginning of the word,
+                  which he/she has typed in a text box.        
+            ** The user can then select an item from the list, which will be displayed in the input field.        
+            ** This feature prevents the user from having to enter an entire word or a set of words.
+            ** JQueryUI provides an autocomplete widget — a control that acts a lot like a select dropdown, 
+                  but filters the choices to present only those that match what the user is typing into a control.       
+            ** jQueryUI provides the autocomplete() method to create a list of suggestions below the input field
+                   and adds new CSS classes to the elements concerned to give them the appropriate style.
        
         Syntax
             $(selector, context).autocomplete (options);

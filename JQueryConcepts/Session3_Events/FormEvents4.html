@@ -8,7 +8,7 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     input, textarea, select, button { display: block; margin: 10px 0; padding: 8px; }
-    .highlight { background-color: lightyellow; }
+    .highlight { background-color: rgb(159, 15  9, 53); }
   </style>
 </head>
 <body>
@@ -62,7 +62,7 @@
 
   </pre>
 <!-- Example -->  
-   <h4> jQuery Form Events Demo - Example Program </h4>
+   <h4> Form Events Demo - Example Program  Using Java Script</h4>
     <h2>Form Events Demo</h2>
   <form id="demoForm">
     <!-- focus / blur -->
@@ -102,8 +102,8 @@
   <script>
     // focus & blur
     const username = document.getElementById("username");
-    username.addEventListener("focus", () => username.classList.add("highlight"));
-    username.addEventListener("blur", () => username.classList.remove("highlight"));
+    username.addEventListener("focus", () => username.classList.add("highlight"));  // addClass() in JQuery
+    username.addEventListener("blur", () => username.classList.remove("highlight"));  // // removeClass() in JQuery
 
     // change & input
     const email = document.getElementById("email");
@@ -145,11 +145,12 @@
   </script>
 
   <hr>
+  
   <hr>
   
   <h2>Form Events Demo - jQuery</h2>
   <form id="demoForm">
-    <!-- focus / blur -->
+    <!-- <focus / blur -->
     <label>Username:</label>
     <input type="text" id="username" placeholder="Focus & Blur">
 
@@ -181,7 +182,7 @@
     <!-- submit / reset -->
     <button type="submit">Submit</button>
     <button type="reset">Reset</button>
-  </form>
+  </form> 
 
   <script>
     $(document).ready(function() {
@@ -247,7 +248,7 @@
       });
     });
   </script>
-  <hr>
+  <hr> 
 
 </body>
 </html>

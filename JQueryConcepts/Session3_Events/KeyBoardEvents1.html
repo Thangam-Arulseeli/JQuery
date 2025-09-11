@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keyboard Events in Java Script</title>
+  <title> Keyboard Events in Java Script </title>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -78,9 +78,9 @@
             $("#status").text("Status: Input value changed to '" + $(this).val() + "'");
         });
 
-        $("#inputField").on('input', function() {
-            $("#status").text("Status: Current input value - '" + $(this).val() + "'");
-        });
+        // $("#inputField").on('input', function() {
+        //     $("#status").text("Status: Current input value - '" + $(this).val() + "'");
+        // });
         /*
             .on('input', function() { ... }) -- Attaches an input event handler.
             The input event is triggered every time the value changes in the field:

@@ -32,7 +32,7 @@
                beforeShowDay : function (date) {
                   var dayOfWeek = date.getDay ();
                   // 0 : Sunday, 1 : Monday, ...
-                  if (dayOfWeek == 0 ||dayOfWeek==2|| dayOfWeek == 5) return [false];
+                  if (dayOfWeek == 0 || dayOfWeek == 6) return [false];
                   else return [true];
                }
             });
@@ -72,11 +72,11 @@
    <body>
       <h1>DATEPICKER</h1>
       <pre>
-         Datepickers in jQueryUI allow users to enter dates easily and visually. 
-         
-         You can customize the date format and language, restrict the selectable date ranges and add in buttons and other navigation options easily.
-
-         jQueryUI provides datepicker() method that creates a datepicker and changes the appearance of HTML elements on a page by adding new CSS classes. 
+            ** Datepickers in jQueryUI allow users to enter dates easily and visually. 
+            ** You can customize the date format and language, restrict the selectable date ranges and add in buttons 
+                  and other navigation options easily.
+            ** jQueryUI provides datepicker() method that creates a datepicker 
+                  and changes the appearance of HTML elements on a page by adding new CSS classes. 
      
          Syntax
             $(selector, context).datepicker(options);

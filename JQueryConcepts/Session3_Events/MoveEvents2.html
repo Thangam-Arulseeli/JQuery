@@ -15,14 +15,6 @@
         }
         .highlight { background: yellow; }
     </style>
-    <style>
-        .box {
-            width: 200px; height: 100px;
-            background: lightgray; margin: 10px; padding: 10px;
-            text-align: center; line-height: 100px; cursor: pointer;
-        }
-        .highlight { background: yellow; }
-    </style>
 </head>
 <body>
   <h4>  Mouse Events in JQuery </h4>
@@ -94,7 +86,7 @@ contextmenu() → right-click (context menu)
         
         // Mouse leave event
         $("#myBox").mouseleave(function() {
-            $(this).css("background-color", "white");
+            $(this).css("background-color", "cyan");
         });
         
         // Mouse move event
@@ -115,7 +107,7 @@ contextmenu() → right-click (context menu)
         // Hover event
         $("#myBox").hover(
             function() { $(this).css("background-color", "lightgreen"); },
-            function() { $(this).css("background-color", "white"); }
+            function() { $(this).css("color", "red"); }
         );
         
         // Context menu (right-click) event
