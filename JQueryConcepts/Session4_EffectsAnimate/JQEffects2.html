@@ -36,15 +36,17 @@
 <body>
   <h1>jQuery Stop Animations</h1>
 
-  The jQuery stop() method is used to stop an animation or effect before it is finished.
+  <pre>
+      ** The jQuery stop() method is used to stop an animation or effect before it is finished.
 
-  The optional stopAll parameter specifies whether also the animation queue should be cleared or not. Default is false,
-  which means that only the active animation will be stopped, allowing any queued animations to be performed afterwards.
+      ** The optional stopAll parameter specifies whether also the animation queue should be cleared or not. Default is false,
+          which means that only the active animation will be stopped, allowing any queued animations to be performed afterwards.
 
-  The optional goToEnd parameter specifies whether or not to complete the current animation immediately. Default is
-  false.
+      ** The optional goToEnd parameter specifies whether or not to complete the current animation immediately. 
+          Default is false.
 
-  So, by default, the stop() method kills the current animation being performed on the selected element.
+      ** So, by default, the stop() method kills the current animation being performed on the selected element.
+  </pre>
   <br>
 
   <button id="stop">Stop sliding</button>
@@ -54,16 +56,16 @@
   <hr>
   <h1>jQuery Callback Functions</h1>
 
-  A callback function is executed after the current effect is 100% finished.
+        ** A callback function is executed after the current effect is 100% finished.
 
-  JavaScript statements are executed line by line. However, with effects, the next line of code can be run even though
-  the effect is not finished. This can create errors.
+        ** JavaScript statements are executed line by line. However, with effects, 
+            the next line of code can be run even though the effect is not finished. This can create errors.
 
-  To prevent this, you can create a callback function.
+        ** To prevent this, you can create a callback function.
 
-  A callback function is executed after the current effect is finished.
+        ** A callback function is executed after the current effect is finished.
 
-  Typical syntax: $(selector).hide(speed,callback);
+        ** Typical syntax: $(selector).hide(speed,callback);
 
   <script>
     $(document).ready(function () {
@@ -97,19 +99,15 @@
   <h6>Bye!!!!!!!</h6>
   <hr>
   <h1>jQuery - Chaining</h1>
-  With jQuery, you can chain together actions/methods.
-
-  Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
-
-  Until now we have been writing jQuery statements one at a time (one after the other).
-
-  However, there is a technique called chaining, that allows us to run multiple jQuery commands, one after the other, on
-  the same element(s).
-
-  To chain an action, you simply append the action to the previous action.
-
-  The following example chains together the css(), slideUp(), and slideDown() methods. The "p1" element first changes to
-  red, then it slides up, and then it slides down:
+        With jQuery, you can chain together actions/methods.
+        Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
+        Until now we have been writing jQuery statements one at a time (one after the other).
+        
+        However, there is a technique called chaining, that allows us to run multiple jQuery commands, one after the other, on
+        the same element(s).
+        To chain an action, you simply append the action to the previous action.
+        The following example chains together the css(), slideUp(), and slideDown() methods. The "p1" element first changes to
+        red, then it slides up, and then it slides down:
 
   <script>
     $(document).ready(function () {

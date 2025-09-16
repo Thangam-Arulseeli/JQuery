@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-< lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,73 +20,199 @@
   </style>
 </head>
 
-<>
+<body>
   <h4>JQuery Effects </h4>
   <pre>
-    jQuery provides several built-in methods to create visual effects on HTML elements. 
-    These effects can enhance user experience by adding animations and transitions to your web pages. 
-    Here are some commonly used jQuery effects:
+      jQuery provides several built-in methods to create visual effects on HTML elements. 
+      These effects can enhance user experience by adding animations and transitions to your web pages. 
+    
+      Here are some commonly used jQuery effects:
 🔹   1. Show / Hide / Toggle
-
-show() → Makes a hidden element visible.
-
-hide() → Hides a visible element.
-
-toggle() → Switches between show and hide automatically.
+        show() → Makes a hidden element visible.
+        hide() → Hides a visible element.
+        toggle() → Switches between show and hide automatically.
 
 🔹 2. Fade Effects
-
-fadeIn() → Fades in the element (increasing opacity).
-
-fadeOut() → Fades out the element (decreasing opacity).
-
-fadeToggle() → Switches between fade in and fade out.
+        fadeIn() → Fades in the element (increasing opacity).
+        fadeOut() → Fades out the element (decreasing opacity).
+        fadeToggle() → Switches between fade in and fade out.
 
 🔹 3. Slide Effects
+        slideUp() → Slides the element up (hides).
+        slideDown() → Slides the element down (shows).
+        slideToggle() → Switches between slide up and down.
 
-slideUp() → Slides the element up (hides).
-
-slideDown() → Slides the element down (shows).
-
-slideToggle() → Switches between slide up and down.
 🔹 4. Custom Animations
-animate() → Allows you to create custom animations by changing CSS properties over time.
-Example: $("#myDiv").animate({ left: '250px', opacity: '0.5' }, 1000);
-🔹 5. Chaining Effects
-You can chain multiple effects together for more complex animations.
-Example: $("#myDiv").fadeOut(1000).slideUp(1000).fadeIn(1000);
-🔹 6. Speed Options 
-You can control the speed of the effects using predefined strings ("slow", "fast") or milliseconds (e.g., 1000 for 1 second).
-Example: $("#myDiv").fadeIn("slow");
-Example: $("#myDiv").fadeIn(2000); // 2 seconds
-🔹 7. Callback Functions  
-Many effect methods accept a callback function that runs after the effect completes.
-Example: $("#myDiv").fadeOut(1000, function() { alert("Fade out complete!"); });
-🔹 8. Stopping Effects  
-stop() → Stops the currently running animation on the selected elements.
-Example: $("#myDiv").stop();
-🔹 9. Queueing Effects  
-By default, jQuery queues effects to run one after another. You can control this behavior using the queue parameter.
-Example: $("#myDiv").fadeIn().fadeOut(); // Runs one after the other
-Example: $("#myDiv").fadeIn().fadeOut().stop(true, true); // Stops and clears the queue
-🔹 10. Easing Effects 
-Easing functions control the acceleration of the animation. jQuery UI provides additional easing options.
-Example: $("#myDiv").animate({ left: '250px' }, { duration: 1000, easing: 'easeOutBounce' });
+        animate() → Allows you to create custom animations by changing CSS properties over time.
+        Example: $("#myDiv").animate({ left: '250px', opacity: '0.5' }, 1000);
 
-  </pre>
+🔹 5. Chaining Effects
+          You can chain multiple effects together for more complex animations.
+          Example: $("#myDiv").fadeOut(1000).slideUp(1000).fadeIn(1000);
+
+🔹 6. Speed Options 
+          You can control the speed of the effects using predefined strings ("slow", "fast") or milliseconds (e.g., 1000 for 1 second).
+          Example: $("#myDiv").fadeIn("slow");
+          Example: $("#myDiv").fadeIn(2000); // 2 seconds
+
+🔹 7. Callback Functions  
+        Many effect methods accept a callback function that runs after the effect completes.
+        Example: $("#myDiv").fadeOut(1000, function() { alert("Fade out complete!"); });
+
+🔹 8. Stopping Effects  
+        stop() → Stops the currently running animation on the selected elements.
+        Example: $("#myDiv").stop();
+
+🔹 9. Queueing Effects  
+          By default, jQuery queues effects to run one after another. 
+          You can control this behavior using the queue parameter.
+          Example: $("#myDiv").fadeIn().fadeOut(); // Runs one after the other
+          Example: $("#myDiv").fadeIn().fadeOut().stop(true, true); // Stops and clears the queue
+
+🔹 10. Easing Effects 
+          Easing functions control the acceleration of the animation. jQuery UI provides additional easing options.
+          Example: $("#myDiv").animate({ left: '250px' }, { duration: 1000, easing: 'easeOutBounce' });
+
+          NOTE:
+          <!--  jQuery UI library is required for additional easing effects.  
+          You can include it via CDN:
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+          Example with jQuery UI:
+          $("#myDiv").animate({ left: '250px' }, 1000, 'easeOutBounce');
+          $("#myDiv").fadeIn("slow"); // Using predefined speed with fadeIn() -->
+          
+
+show()
+      In jQuery, the second argument of .show() specifies speed. Instead of "slow", you can use:
+    Built-in speed options
+        "fast" → 200ms
+        "slow" → 600ms
+        "normal" (or no argument) → default
+  
+        Milliseconds (custom duration)
+        ---------------------------------
+        You can specify your own duration in milliseconds:
+
+        $("#box").show(1000); // 1 second
+        $("#box").show(2000); // 2 seconds
+
+        With easing (if jQuery UI is included)
+        -----------------------------------------
+        $("#box").show(1000, "linear");
+        $("#box").show(1000, "swing");
+
+        With callback after animation finishes
+        -----------------------------------------
+        $("#box").show(1000, function() {
+            alert("Box is now visible!");
+        });
+        Example replacing "slow" with other options:
+        ---------------------------------------------
+        $("#btnShow").click(function() {
+            $("#box").show("fast");   // or .show(1500); or .show("normal");
+        });
+---------------------------------------------------
+
+.fadeIn() in jQuery works almost the same way as .show(), but instead of just revealing the element, 
+    it gradually increases its opacity from hidden to fully visible.
+
+      Options for .fadeIn()
+      1. Predefined speeds
+      $("#box").fadeIn("fast");   // 200ms
+      $("#box").fadeIn("slow");   // 600ms
+
+      2. Custom duration (milliseconds)
+      $("#box").fadeIn(1000);  // 1 second
+      $("#box").fadeIn(2000);  // 2 seconds
+
+      3. With easing (if jQuery UI is available)
+      $("#box").fadeIn(1000, "linear"); 
+      $("#box").fadeIn(1000, "swing"); 
+
+      4. With a callback function
+      $("#box").fadeIn(1000, function() {
+          alert("Fade-in complete!");
+      });
+
+
+Example combining everything:
+
+$("#btnShow").click(function() {
+    $("#box").fadeIn(1500, "swing", function() {
+        console.log("Box faded in!");
+    });
+});
+
+---------------------------------------------
+.fadeTo() in jQuery.
+
+Unlike .fadeIn() / .fadeOut(), which only show or hide,
+.fadeTo() lets you animate the element to a specific opacity between 0 (invisible) and 1 (fully visible).
+
+Syntax
+$(selector).fadeTo(speed, opacity, easing, callback);
+
+🔹 Options
+Speed (duration)
+"fast" → 200ms
+"slow" → 600ms
+"normal" (default) → 400ms
+
+Or a custom duration in milliseconds:
+$("#box").fadeTo(1000, 0.5); // fade to 50% opacity in 1 sec
+
+
+Opacity (required)
+Value between 0.0 and 1.0
+
+Example:
+$("#box").fadeTo("slow", 0.3); // fade to 30% visible
+
+
+Easing (optional, requires jQuery UI)
+"swing" (default) or "linear"
+
+Example:
+$("#box").fadeTo(2000, 0.8, "linear");
+
+
+Callback (optional)
+Function to run after animation completes
+$("#box").fadeTo(1500, 0.2, function() {
+    alert("Fading finished, opacity is now 20%!");
+});
+
+✅ Example combining all options
+$("#btnFade").click(function() {
+    $("#box").fadeTo(2000, 0.4, "swing", function() {
+        console.log("Box faded to 40% opacity.");
+    });
+});
+--------------------------------
+omparison table of the four jQuery fading methods 👇
+
+Method	     Purpose	                                                  Parameters	              Effect
+.fadeIn()	   Gradually makes a hidden element visible (opacity 0 → 1).	speed, easing, callback	  Shows the element with fade effect.
+.fadeOut()	  Gradually hides an element (opacity 1 → 0).	              speed, easing, callback	  Hides the element with fade effect.
+.fadeToggle()	Toggles between .fadeIn() and .fadeOut().               	speed, easing, callback	  Switches visibility with fade.
+                If the element is visible, it fades out; if hidden, it fades in.
+.fadeTo()	    Fades an element to a specified opacity (between 0.0 and 1.0). 	speed, opacity, easing, callback	Changes opacity to the given value.
+                Unlike .fadeIn() / .fadeOut(), it doesn’t force full hide or show.
+        </pre>
 
   <Hr></Hr>
 
   <h5>Single Combined program for Jquery Effects </h5>
   <pre>
     Features:
-
-A green box (#box) is used to test all effects.
-
-Buttons demonstrate each effect (show, hide, toggle, fade, slide).
-
-"slow" makes the animations visible (you can also use "fast" or milliseconds like 1000).
+        ** A green box (#box) is used to test all effects.
+        ** Buttons demonstrate each effect (show, hide, toggle, fade, slide).
+        ** "slow" makes the animations visible (you can also use "fast" or milliseconds like 1000).
   </pre>
+  <hr>
+
+  <div id="box">Hello!</div>
+
   <!-- Show/Hide/Toggle -->
   <button id="btnShow">Show</button>
   <button id="btnHide">Hide</button>
@@ -105,7 +230,7 @@ Buttons demonstrate each effect (show, hide, toggle, fade, slide).
   <button id="btnSlideDown">Slide Down</button>
   <button id="btnSlideToggle">Slide Toggle</button>
 
-  <div id="box">Hello!</div>
+  
 
   <script>
     $(document).ready(function() {
@@ -151,6 +276,6 @@ Buttons demonstrate each effect (show, hide, toggle, fade, slide).
 
     });
   </script>
-
+</body>
 </body>
 </html>

@@ -19,9 +19,9 @@
     The two primary methods for event handling in jQuery are .on() and .off().  
 
     on() Method
-        Used to attach one or more event handlers to selected elements.
-        Replaces older methods like .click(), .bind(), .delegate().
-        Supports multiple events, event delegation, and passing data.
+        ** Used to attach one or more event handlers to selected elements.
+        ** Replaces older methods like .click(), .bind(), .delegate().
+        ** Supports multiple events, event delegation, and passing data.
 
     off() Method
         Used to remove event handlers attached using .on().
@@ -33,7 +33,8 @@
         $(selector).on(event, childSelector, data, function)
             Attaches an event handler to the selected elements.
             - event: The event type (e.g., "click", "mouseover").
-            - childSelector: (Optional) A selector string to filter the descendants of the selected elements that trigger the event.
+            - childSelector: (Optional) A selector string to filter the descendants of the selected elements
+                 that trigger the event.
             - data: (Optional) Data to be passed to the event handler.
             - function: The function to execute when the event is triggered.
 
@@ -56,7 +57,6 @@
       Enable Click Event → Uses .on() to attach the handler.
       Disable Click Event → Uses .off() to remove the handler.
       Status message updates live to show whether the event is active.
-
 
 Features in this demo:
       Click Event → Shows timestamp when clicked.
