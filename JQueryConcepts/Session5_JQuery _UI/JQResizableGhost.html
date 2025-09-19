@@ -1,0 +1,70 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery UI Resizable functionality</title>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+        <style>
+            .ui-widget-header {
+                background: lightyellow;
+            border: 1px solid #b9cd6d;
+            color: red;
+            font-weight: initial;
+            }
+            .ui-widget-content {  
+            background: lightgreen;  
+            border: 1px solid #DDDDDD;  
+            color: Red;  
+         }  
+         #resizable-2,#resizable-3 { width: 150px; height: 150px; padding: 0.6em;  text-align: center; margin: 0; }
+            </style>
+            <script>
+                $(function() {
+                    $( "#resizable-2" ).resizable({ // Smoothly animates when resizing finishes.
+                        animate: true
+                    });
+                    $( "#resizable-3" ).resizable({
+                        ghost: true  // Shows a semi-transparent helper element during resizing. Shows a ghost outline instead of resizing live.
+                    });
+                });
+                /*
+                jQuery UI resizable() widget
+                ----------------------------
+                animate: true
+
+                    When resizing stops, the element smoothly animates to its final size instead of jumping directly.
+                    This gives a polished effect, like a smooth "snap" to the final dimensions.
+
+                    Example: If you drag a box larger and release, it will animate (smoothly transition) to the size you dragged it to.
+
+                    ghost: true
+                    While resizing, instead of stretching the actual element, a semi-transparent outline (ghost) is shown.
+
+                    The actual element will resize only after you finish dragging.
+
+                    Example:
+                    When you drag the box edge, you’ll see a faint outline (ghost) showing the new size.
+                    Once you release the mouse, the element snaps to that ghost size.
+
+                    ("#box").resizable({
+                        ghost: true,
+                        animate: true
+                        });
+                This will show a ghost outline while dragging and then animate the box to its new size when you release.
+
+                */
+
+                </script>
+                </head>
+                <body>
+                    <div id="resizable-2" class="ui-widget-content">
+                        <h1 class="ui-widget-header">animation!</h1>
+                        </div>
+                        <br>
+                        <div id="resizable-3" class="ui-widget-content">
+                            <h2 class="ui-widget-header">I'm ghost!!</h2>
+                      </div>
+                </body>
+                </html>
+                            

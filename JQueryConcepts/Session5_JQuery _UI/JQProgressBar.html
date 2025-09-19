@@ -31,15 +31,10 @@
 <body>
    <pre>
         Progress bars indicate the completion percentage of an operation or process. We can categorize progress bar as determinate progress bar and indeterminate progress bar.
-
-        Determinate progress bar should only be used in situations where the system can accurately update the current status.
-        
-        A determinate progress bar should never fill from left to right, then loop back to empty for a single process.
-        
-        If the actual status cannot be calculated, an indeterminate progress bar should be used to provide user feedback.
-        
-        jQueryUI provides an easy-to-use progress bar widget that we can use to let users know that our application is hard at work performing the requested operation. 
-        
+        Determinate progress bar should only be used in situations where the system can accurately update the current status.      
+        A determinate progress bar should never fill from left to right, then loop back to empty for a single process.  
+        If the actual status cannot be calculated, an indeterminate progress bar should be used to provide user feedback.       
+        jQueryUI provides an easy-to-use progress bar widget that we can use to let users know that our application is hard at work performing the requested operation.       
         jQueryUI provides progressbar() method to create progress bars.
 
         Syntax
@@ -65,7 +60,7 @@
                   setTimeout(progress, 100); //increases the value every 100ms
                }
             }
-            setTimeout(progress, 100); // starts after 5 second
+            setTimeout(progress, 50); // starts after 5 second
          });
       });
    </script>

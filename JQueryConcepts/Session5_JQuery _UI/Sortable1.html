@@ -1,0 +1,123 @@
+<!DOCTYPE html>  
+<head>  
+   <title>jQuery UI Sortable - Example</title>  
+   <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+   <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+   <style>  
+      #sort-1, #sort-2 { list-style-type: none; margin: 0;   
+         padding: 0; width: 200px; }  
+      #sort-1 li, #sort-2 li { margin: 0 5px 5px 5px; padding: 0.4em;   
+         padding-left: 1.5em; font-size: 18px; height: 20px; }  
+      .default {  
+         background: crimson;  
+         border: 2px solid brown;  
+         color: white;
+      }  
+      .highlight {  
+         border: 2px solid crimson;  
+         font-weight: bold;  
+         font-size: 40px;  
+         background-color: gray;}
+         #sort-2{
+             
+         }
+   </style>  
+   <script>  
+    $(function() {  
+         $( "#sort-1, #sort-2" ).sortable({  
+            connectWith: "#sort-1, #sort-2"  
+         });  
+         
+ 
+      });  
+      $(function() {  
+         $( "#sort-1" ).sortable({  
+            delay:1000  
+         });  
+         $( "#sort-2" ).sortable({  
+            distance:150  
+         });  
+         $( "#sort-3" ).sortable({
+            placeholder: "highlight"
+         }); 
+      });  
+   </script>  
+</head>  
+<body> 
+   <pre>
+      What is sortable()?
+
+         sortable() is a jQuery UI interaction method (not part of core jQuery).
+         It lets you reorder a list of items using drag and drop.
+         Very useful for making to-do lists, dashboards, menus, or tables where users can rearrange items.
+
+         Syntax
+         $(selector).sortable(options);
+
+         selector → the container with child items you want to reorder.
+         options → (optional) settings to customize behavior.
+
+         Common Options
+         axis: "y" → restrict sorting to vertical direction.
+         axis: "x" → restrict sorting to horizontal direction.
+         handle: ".drag-handle" → only allow dragging by a specific handle.
+         placeholder: "highlight" → placeholder style when dragging.
+         connectWith: "#otherList" → drag between multiple lists.
+
+         Example:
+
+         $("#sortable").sortable({
+         axis: "y",
+         placeholder: "ui-state-highlight"
+         });
+
+         Events
+
+         sortstart → when dragging starts.
+         sortstop → when dragging stops.
+         update → when the order is changed (useful to save the new order in DB).
+
+         Example:
+
+         $("#sortable").sortable({
+         update: function(event, ui) {
+            var order = $(this).sortable("toArray");
+            console.log("New order: " + order);
+         }
+         });
+
+
+         Difference Between selectable() vs sortable()
+         --------------------------------------------------
+         Feature	          selectable()	                              sortable()
+         -----------------------------------------------------------------------------------------
+         Purpose	          Select multiple items with                  Rearrange items via drag and drop
+                                 mouse drag (like selecting files)	
+         Action	          Highlight items	                           Change order of items
+         Common use case	File selection, tagging	                     To-do lists, menu ordering
+
+   </pre> 
+
+   <h3>Delay by 1000ms</h3>  
+   <ul id="sort-1">  
+      <li class="default">First</li>  
+      <li class="default">Second</li>  
+      <li class="default">Third</li>  
+      <li class="default">Fourth</li>   
+   </ul>  
+   <h3>Distance Delay by 150px</h3>  
+   <ul id="sort-2">  
+      <li class="default">Fifth</li>  
+      <li class="default">Sixth</li>  
+      <li class="default">Seventh</li> 
+      <li class="default">Eighth</li>  
+   </ul>  
+   <ul id="sort-3">  
+    <li class="default">Fifth</li>  
+    <li class="default">Sixth</li>  
+    <li class="default">Seventh</li> 
+    <li class="default">Eighth</li>  
+ </ul>  
+</body>  
+</html>

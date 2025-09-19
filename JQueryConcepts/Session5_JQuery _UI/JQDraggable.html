@@ -39,7 +39,53 @@ $( "#draggable10" ).draggable();
   });  
   </script>  
 </head>  
-<body>  
+<body>
+     <pre>
+          class="ui-widget-content"
+          --------------------------------
+          ui-widget-content is a predefined class name used by the jQuery UI library (not plain HTML).
+          It applies default jQuery UI theme styles (colors, borders, backgrounds, etc.) to widgets.
+
+     Example:
+          <div class="ui-widget-content">
+          This is styled with jQuery UI's "content" theme.
+          </div>
+
+          2. Role in jQuery UI
+
+               jQuery UI uses a theming framework.
+               It provides a consistent look and feel across all jQuery UI widgets (like buttons, dialogs, accordions, etc.).
+               The themes are defined using CSS classes.
+
+               3 main classes are:
+               ui-widget           → general widget container
+               ui-widget-header    → for widget headers (title bars, tabs)
+               ui-widget-content   → for the body/content area
+
+               So if you create a dialog, selectable, sortable, datepicker, etc., 
+                    jQuery UI applies these classes automatically to give a consistent look and feel.
+
+               3. CSS Example (from default jQuery UI theme)
+               .ui-widget-content {
+               border: 1px solid #dddddd;
+               background: #ffffff;
+               color: #333333;
+               }
+
+          So applying class="ui-widget-content" makes the element have a light background, gray border, and dark text.
+
+          4. Example with jQuery UI
+          <div id="myBox" class="ui-widget-content" style="width:200px; height:100px; padding:10px;">
+          This is a styled box using jQuery UI class.
+          </div>
+
+          It will automatically have the "jQuery UI theme look" without you writing custom CSS.
+
+          In short:
+                class="ui-widget-content" is a jQuery UI theme class that styles the element’s content area 
+                         (background, border, text color) according to the current jQuery UI theme.
+     </pre> 
+     
      <div id="draggable1" class="ui-widget-content">  
       <p>1</p>  
      </div> 

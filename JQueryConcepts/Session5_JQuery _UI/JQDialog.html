@@ -34,8 +34,8 @@
     $(function() {
        $( "#dialog1" ).dialog({
           autoOpen: true, 
-          hide: "explode",
-          show : "blind", //blind,bounce,clip,drop,explode,fade,fold,highlight,scale,shake,transfer
+          hide: "fold",  // blind, bounce, clip, drop, explode, fade, fold, highlight, puff, pulsate, scale, shake, size, slide, transfer.
+          show : "bounce", //blind,bounce,clip,drop,explode,fade,fold,highlight,scale,shake,transfer
           height: 200      
        });
        $( "#opener1" ).click(function() {
@@ -47,24 +47,29 @@
    
    <body>
        <h1>DIALOG UI</h1>
-       <pre>Dialog boxes are one of the nice ways of presenting information on an HTML page. 
-           
-        A dialog box is a floating window with a title and content area. 
-        
-        This window can be moved, resized, and of course, closed using "X" icon by default.
-
-        jQueryUI provides dialog() method that transforms the HTML code written on the page into HTML code to display a dialog box.
+       <pre>
+         
+         Dialog boxes are one of the nice ways of presenting information on an HTML page. 
+         A dialog box is a floating window with a title and content area. 
+         This window can be moved, resized, and of course, closed using "X" icon by default.
+         jQueryUI provides dialog() method that transforms the HTML code written on the page 
+               into HTML code to display a dialog box.
     
             Syntax
                  $(selector, context).dialog(options);
     </pre>
       <!-- HTML --> 
       <div id = "dialog" 
-         title = "Hello Trainees...">Welcome to Dialog in jQuery!</div>
+         title = "Hello Trainees...">Welcome to Dialog in jQuery!
+      </div>
+
       <button id = "opener">Open Dialog</button>
       <hr>
+
       <div id = "dialog1"
-         title = "Hello...">Good day!</div>
+         title = "Hello...">Good day!
+      </div>
+      
       <button id = "opener1">Open Dialog1</button>
    </body>
 </html>

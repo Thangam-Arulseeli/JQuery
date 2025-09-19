@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery UI Selectable Example</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <style>
+    #selectable {
+      width: 250px;
+      padding: 0;
+      list-style: none;
+    }
+    #selectable li {
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+    /* Highlight selected items */
+    .ui-selected {
+      background: #6fa8dc;
+      color: white;
+    }
+    .ui-selecting {
+      background: #d0e6f9;
+    }
+  </style>
+</head>
+<body>
+  <h3>Select Multiple Items:</h3>
+<pre>
+   selectable() is a jQuery UI interaction method (not part of core jQuery).
+   It lets you make a group of elements selectable with the mouse, 
+         similar to selecting multiple files/folders in Windows Explorer.
+
+    You can click and drag a box around elements, and they will be marked as selected.
+
+    How it works:
+      Hold mouse click + drag over list items → multiple items get selected.
+      Selected items get the class .ui-selected (blue background in this example).
+      The stop event fires after selection is complete → we list all selected items.
+</pre>
+
+<ol id="selectable">
+  <li>Item A</li>
+  <li>Item B</li>
+  <li>Item C</li>
+  <li>Item D</li>
+  <li>Item E</li>
+  <li>Item F</li>
+</ol>
+
+<div id="result"></div>
+
+<script>
+$(function() {
+  $("#selectable").selectable({
+    stop: function() {
+      // Collect all selected items
+      var result = [];
+      $(".ui-selected", this).each(function() {
+        result.push($(this).text());
+      });
+      // Show selected items
+      $("#result").html("You selected: " + result.join(", "));
+    }
+  });
+});
+</script>
+
+</body>
+</html>

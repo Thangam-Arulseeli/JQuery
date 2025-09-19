@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <script>
+       
+       var x = 0;  // creates a global variable (if declared outside any function) -- just like a static variable in C/C++
+        // A true static variable in languages like C#/Java is usually tied to a class or method, not the global scope.
+        // Here, x retains its value between function calls because it's in the global scope.
+        // If x were declared with 'let' or 'const' inside a function, it would not retain its value between calls.
+        // In this case, x is incremented each time the window is resized, demonstrating its persistent state.
+        
+        $(document).ready(function(){
+            $(window).resize(function(){
+                $("span").text(x += 1);
+            });
+        });
+        </script>
+
+    </head>
+    <body>
+    <p>Window Resized <span>0</span> times.</p>
+    <p>resizing my window.</p>
+    </body>
+</html>

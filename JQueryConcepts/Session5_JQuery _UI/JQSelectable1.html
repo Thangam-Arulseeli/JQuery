@@ -1,0 +1,160 @@
+<!doctype html>  
+<html lang="en">  
+   <head>  
+      <meta charset="utf-8">  
+      <title>jQuery UI Selectable</title>  
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+ 
+      <style>  
+         #select-1 .ui-selecting,#select-2 .ui-selecting {   
+            background: gray ; }  
+         #select-1 .ui-selected,#select-2 .ui-selected {   
+            background: crimson; color: white; }  
+         #select-1,#select-2 { list-style-type: none; margin: 0;   
+            padding: 0; width: 200px; }  
+         #select-1 li,#select-2 li { margin: 5px; padding: 0.4em;   
+            font-size: 18px; height: 20px; }  
+         .ui-widget-content {  
+            background: turquoise;  
+            border: 2px solid black;  
+            color: black;  
+         }  
+      </style>  
+      <script>  
+         $(function() {  
+            $( "#select-1" ).selectable({  
+               delay : 500  
+            });  
+            $( "#select-2" ).selectable({  
+               distance : 150  
+            });  
+         });  
+      </script>  
+
+      <style>
+    #selectable li {
+      margin: 3px;
+      padding: 5px;
+      width: 150px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .ui-selected { background: #6fa8dc; color: white; }
+  </style>
+
+  <script>
+    $(function() {
+      $("#selectable").selectable();
+    });
+  </script>
+
+   </head>  
+   <body>  
+      <pre>
+         What is selectable()?
+
+            ** selectable() is a jQuery UI interaction method (not part of core jQuery).
+            ** It lets you make a group of elements selectable with the mouse, 
+                  similar to selecting multiple files/folders in Windows Explorer.
+            ** You can click and drag a box around elements, and they will be marked as selected.
+
+            Syntax
+            $(selector).selectable(options);
+
+            selector → the container or list of items you want to make selectable.
+            options → (optional) settings to control the behavior.
+
+            Common Options
+            ---------------
+            filter → restrict selection to certain child elements.
+            cancel → prevent selection of some elements.
+            tolerance → defines how an item is selected (e.g., "touch" vs. "fit").
+            delay Option
+               Meaning: Minimum time (in milliseconds) the mouse must be held down before the selection starts.
+               Use case: Prevents accidental selection when you just click quickly.
+            distance Option
+               Meaning: Minimum distance (in pixels) the mouse must move while holding down before the selection starts.
+               Use case: Prevents selection from starting on tiny/accidental movements.
+
+            Example:
+                  $("#selectable").selectable({
+                  filter: "li",         // only list items selectable
+                  tolerance: "touch"    // selected if touched by drag box
+                  });
+
+            Example:
+            $("#selectable").selectable({
+                  delay: 200   // must hold mouse down for 200ms before selection starts
+                  });
+
+            Example:
+            $("#selectable").selectable({
+                  distance: 20   // must drag at least 20px before selection begins
+                  });
+                  
+            Events
+            --------
+            You can bind to events like:
+            selectableselected → when an item is selected.
+            selectablestart → when selection starts.
+            selectablestop → when selection stops.
+
+                  $("#selectable").selectable({
+                  stop: function() {
+                     var result = [];
+                     $(".ui-selected", this).each(function() {
+                        result.push($(this).text());
+                     });
+                     alert("You selected: " + result.join(", "));
+                  }
+                  });
+
+            In short:
+            selectable() is a jQuery UI method that makes elements multi-selectable using the mouse.
+
+            
+      </pre>
+      <h3>Requires delay of 500ms</h3>  
+      <ol id="select-1">  
+         <li class="ui-widget-content">First</li>  
+         <li class="ui-widget-content">Second</li>  
+         <li class="ui-widget-content">Third</li>  
+         <li class="ui-widget-content">Fourth</li>  
+      </ol>  
+      <h3>Requires mouse to move a distance of 150px</h3>  
+      <ol  id="select-2">  
+         <li class="ui-widget-content">Fifth</li>  
+         <li class="ui-widget-content">Sixth</li>  
+         <li class="ui-widget-content">Seventh</li> 
+         <li class="ui-widget-content">Eighth</li> 
+      </ol>  
+
+<hr>  
+
+      <ol id="selectable">
+         <li class="ui-widget-content">Item 1</li>
+         <li class="ui-widget-content">Item 2</li>
+         <li class="ui-widget-content">Item 3</li>
+         <li class="ui-widget-content">Item 4</li>
+         <li class="ui-widget-content">Item 5</li>
+      </ol>
+         <p>Selected items: <span id="selected-items">None</span></p>   
+         <script>
+            $(function() {
+               $("#selectable").selectable({
+               stop: function() {
+                  var result = [];
+                  $(".ui-selected", this).each(function() {
+                     result.push($(this).text());
+                  });
+                  $("#selected-items").text(result.length ? result.join(", ") : "None");
+               }
+               });
+            });
+
+      </script>
+
+   </body>  
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang = "en">
+   <head>
+      <meta charset = "utf-8">
+      <title>jQuery UI Menu functionality</title>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/mint-choc/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      
+      <!-- CSS -->
+      <style>
+         .ui-menu {
+            width: 200px;
+            height:600px;
+         }
+      </style>
+      <!-- Javascript -->
+      
+      <script>
+        // $(function() {
+         //   $( "#menu-1" ).menu();
+         //});
+         $(function() {
+            $( "#menu-1" ).menu({
+               icons: { submenu: "ui-icon-circle-triangle-e"}, // Controls submenu icons
+               position: { my: "right top", at: "right-200 top+5" } //default value is:$( ".selector" ).menu ({ position: { my: "left top", at: "right-5 top+5" } });
+            });
+            //$( "#menu-1" ).menu();
+            //$( "#menu-1" ).menu("disable");
+            //$( "#menu-1" ).menu("enable");
+            //$( "#menu-1" ).menu("collapseAll", null, true); // collapse all submenus
+            //$( "#menu-1" ).menu("collapse", event); // collapse the currently focused submenu
+            //$( "#menu-1" ).menu("expand", event); // expand the currently focused submenu
+            //$( "#menu-1" ).menu("next", event); // move focus to the next item
+            //$( "#menu-1" ).menu("previous", event); // move focus to the previous item
+            //$( "#menu-1" ).menu("nextPage", event); // move focus to the next page of items
+            //$( "#menu-1" ).menu("previousPage", event); // move focus to the previous page of items
+            //$( "#menu-1" ).menu("first", event); // move focus to the first item
+            //$( "#menu-1" ).menu("last", event); // move focus to the last item
+            //$( "#menu-1" ).menu("refresh"); // refresh the menu items
+            //$( "#menu-1" ).menu("widget"); // returns a jQuery object containing the menu
+            //$( "#menu-1" ).menu("option", "icons.submenu", "ui-icon-circle-triangle-e"); // get or set the value of an option
+            //$( "#menu-1" ).menu("option", "icons.submenu", { submenu: "ui-icon-circle-triangle-e"}); // set multiple options at once
+            //$( "#menu-1" ).menu("option", "position", { my: "right top", at: "right-200 top+5" }); // set multiple options at once
+            //$( "#menu-1" ).menu("option", "position"); // get the value of an option
+            //$( "#menu-1" ).menu("destroy"); // remove the menu functionality completely and return the element to its pre-init state.   
+            //$( "#menu-1" ).menu("instance"); // returns the menu instance object
+            //$( "#menu-1" ).menu("instance").option; // returns the menu instance's options object
+            //$( "#menu-1" ).menu("instance").widget; // returns a jQuery object containing the menu
+            //$( "#menu-1" ).menu("instance").element; // returns the jQuery object containing the menu's original element
+            //$( "#menu-1" ).menu("instance").destroy(); // remove the menu functionality completely and return the element to
+            // NOTE: 
+            // place the submenu’s right top corner aligned with the parent’s position 200px left and 5px down.
+            
+            // icons  
+            // Controls submenu icons
+            
+            // position
+            //    Defines how submenus are positioned.
+            //    my: the submenu’s alignment point.
+            //    at: the parent item’s alignment point.
+         
+          // see https://api.jqueryui.com/menu/#option-position
+
+         });
+      </script>
+   </head>
+   
+   <body>
+       <h1>MENU UI</h1>
+       <pre>
+           
+        A menu widget usually consists of a main menu bar with pop up menus. Items in pop up menus often have sub pop up menus.      
+        A menu can be created using the markup elements as long as the parent-child relation is maintained (using ul or ol).    
+        Each menu item has an anchor element.
+        
+        The Menu Widget in jQueryUI can be used for inline and popup menus, or as a base for building more complex menu systems.    
+        For example, you can create nested menus with custom positioning.
+        jQueryUI provides menu() methods to create a menu.
+
+        Syntax
+                $(selector, context).menu (options);
+    
+    </pre>
+      <!-- HTML --> 
+      <ul id = "menu-1">
+         <li><a href = "https://en.wikipedia.org/wiki/HTML">HTML</a></li>
+         <li><a href = "https://en.wikipedia.org/wiki/CSS">CSS</a></li>
+         <li><a href = "https://en.wikipedia.org/wiki/JavaScript">Javascript</a>
+            <ul>
+               <li><a href = "https://www.geeksforgeeks.org/javascript/introduction-object-oriented-programming-javascript/">OOPS</a></li>
+               <li><a href = "https://www.geeksforgeeks.org/javascript/form-validation-using-javascript/">Validation</a></li>
+               <li><a href = "https://www.geeksforgeeks.org/javascript/how-to-manipulate-dom-elements-in-javascript/">DOM</a></li>
+            </ul>
+         </li>
+         <li><a href = "https://en.wikipedia.org/wiki/JQuery">jQuery</a></li>
+         <li><a href = "https://en.wikipedia.org/wiki/Bootstrapping_(disambiguation)">Bootstrap</a></li>
+      </ul>
+   </body>
+</html>

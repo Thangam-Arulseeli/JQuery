@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Accordion</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://code.jquery.com/ui/1.10.4/themes/dark-hive/jquery-ui.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -43,36 +43,58 @@
 <body>
   <h1>JQUERY UI</h1>
   <pre>
-    JqueryUI is the most popular front end frameworks currently. 
-    
-    It is sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
-    
+    JqueryUI is the most popular front end frameworks currently.  
+    It is sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.   
     It uses HTML, CSS and Javascript.
-
-    JqueryUI is a powerful Javascript library built on top of jQuery JavaScript library. 
-    
-    UI stands for User interface. 
-    
+    JqueryUI is a powerful Javascript library built on top of jQuery JavaScript library.     
+    UI stands for User interface.   
     It is a set of plug-ins for jQuery that adds new functionalities to the jQuery core library.
-
-    The set of plug-ins in JqueryUI includes interface interactions, effects, animations, widgets, and themes built on top of jQuery JavaScript Library.
-
+    The set of plug-ins in JqueryUI includes interface interactions, effects, animations, widgets, and themes 
+        built on top of jQuery JavaScript Library.
     It was released in September 2007, announced in a blog post by John Resig on jquery.com. 
-
-    The latest release, 1.10.4, requires jQuery 1.6 or later version. 
-    
+    The latest release, 1.10.4, requires jQuery 1.6 or later version.   
     jQuery UI is a free, open source software, licensed under the MIT License.
 
     Features:
+       * JqueryUI is categorized into four groups, interactions, widgets, effects, utilities. 
+       *  Interactions: Draggable, Droppable, Resizable, Selectable, Sortable.
+       *  Effects: Add effects and animations to your web pages.
+       *  Utilities: Position, Widget factory, Theming.
+       * Widgets: Pre-built, themeable UI components for your web applications.
 
-        JqueryUI is categorized into four groups, interactions, widgets, effects, utilities. 
+        JqueryUI is built on top of the jQuery library, so you need to include jQuery before including JqueryUI.
+        You can include JqueryUI in your web pages using a CDN (Content Delivery Network) or by downloading it and hosting it yourself.
+        You can include the jQuery UI CSS file to style your UI components.
+        You can also include the jQuery UI JavaScript file to add interactivity to your UI components.
+        You can include the jQuery UI theme CSS file to change the look and feel of your UI components.
 
-        Seminar on interactions,effects and utilities by Trainees.(Simple examples)
+       * JqueryUI provides a wide range of UI components, including accordions, datepickers, dialogs, sliders, tabs, and more.
+        
+        Each UI component is highly customizable and can be configured using various options and methods.
+        JqueryUI also provides a theming framework that allows you to create your own custom themes for your UI components.
+        You can use the ThemeRoller tool to create custom themes for your UI components.  
+        You can download the entire library or just the components you need.
+        You can also customize the theme of your UI components using the ThemeRoller tool.
+        
+        JqueryUI is compatible with all major browsers, including Chrome, Firefox, Safari, Opera, and Internet Explorer 9+.
+        It is also compatible with mobile browsers, including iOS and Android.
+        JqueryUI is easy to learn and use, especially if you are already familiar with jQuery.
+       
+        Widgets are the most important part of JqueryUI.
+        Widgets are the elements of the graphical user interface (GUI) that displays information or provides a
+             specific way for a user to interact with the application.
+
+        Widgets are built using a combination of HTML, CSS, and JavaScript.
+        Widgets in JqueryUI are:
+       *  Accordion, Autocomplete, Button, Datepicker, Dialog, Menu, Progressbar, Selectmenu, Slider, Spinner, Tabs, Tooltip.
+       
 <img src="jqueryui.jpg" height="400px" width="600px">
   </pre>
   <h1>ACCORDION</h1>
   <pre>
-        Accordion Widget in jQueryUI is a jQuery based expandable and collapsible content holder that is broken into sections and probably looks like tabs. 
+        Accordion Widget in jQueryUI is a jQuery based expandable and collapsible content holder 
+            that is broken into sections and probably looks like tabs. 
+
         jQueryUI provides accordion() method to achieve this.
 
         Syntax
@@ -114,6 +136,7 @@
     </div>
   </div>
   <hr>
+  
   <div id="accordion1">
     <h2 class="b">Shop by Category</h1>
       <div class="a">
@@ -176,38 +199,7 @@
             </p>
           </div>
   </div>
-  <hr>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Sl.no</th>
-        <th>Items</th>
-        <th>Price in Rs.</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="success">
-        <td>1</td>
-        <td>vases</td>
-        <td>500-700</td>
-      </tr>
-      <tr class="warning">
-        <td>2</td>
-        <td>Wall Frames</td>
-        <td>300-500</td>
-      </tr>
-      <tr class="danger">
-        <td>3</td>
-        <td>Scented Candles</td>
-        <td>600-800</td>
-      </tr>
-      <tr class="info">
-        <td>4</td>
-        <td>Paintings</td>
-        <td>2000-10000</td>
-      </tr>
-    </tbody>
-  </table>
+  
 </body>
 
 </html>
